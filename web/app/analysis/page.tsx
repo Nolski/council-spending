@@ -51,6 +51,17 @@ export default function AnalysisPage() {
           value; the rest is uncategorised. Every number traces to a query over the
           published data.
         </p>
+        <p className="mt-2 text-sm">
+          <a
+            href="/research/council-finance-critique.md"
+            className="text-blue-600 hover:underline dark:text-blue-400"
+          >
+            → Read the full research report
+          </a>{" "}
+          <span className="text-neutral-400">
+            (critical analysis with citations &amp; re-budgeting options)
+          </span>
+        </p>
       </header>
 
       <div className="grid gap-4 sm:grid-cols-2">
