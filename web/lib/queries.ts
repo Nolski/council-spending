@@ -99,3 +99,64 @@ export function supplierDetailSql(partitionPaths: string[], supplierId: string):
           WHERE supplier_id_canonical = ${sqlLit(supplierId)}
           ORDER BY payment_date DESC LIMIT 500`;
 }
+
+// ---- Grants ----
+
+export interface GrantYearRow {
+  council: string;
+  financial_year: number;
+  total: number;
+  grant_count: number;
+}
+
+export function grantsByYearSql(): string {
+  return `SELECT council, financial_year, total, grant_count
+          FROM ${parquet("summary/grants_by_year.parquet")}
+          WHERE financial_year IS NOT NULL
+          ORDER BY financial_year, council`;
+}
+
+export interface GrantRow {
+  award_date: string;
+  council: string;
+  recipient_name_raw: string;
+  grant_programme: string;
+  purpose: string;
+  amount: number;
+}
+
+export function grantsSql(opts: { recipient?: string; council?: string; limit?: number }): string {
+  const conds = ["amount IS NOT NULL"];
+  if (opts.recipient)
+    conds.push(`lower(recipient_name_norm) LIKE ${sqlLit(`%${opts.recipient.toLowerCase()}%`)}`);
+  if (opts.council) conds.push(`council = ${sqlLit(opts.council)}`);
+  return `SELECT CAST(award_date AS VARCHAR) AS award_date, council, recipient_name_raw,
+                 grant_programme, purpose, amount
+          FROM ${parquet("grants/grants.parquet")}
+          WHERE ${conds.join(" AND ")}
+          ORDER BY amount DESC LIMIT ${opts.limit ?? 200}`;
+}
+
+// ---- Contracts ----
+
+export interface ContractRow {
+  council: string;
+  title: string;
+  supplier_name_raw: string;
+  category: string;
+  value: number;
+  start_date: string;
+  end_date: string;
+}
+
+export function contractsSql(opts: { supplier?: string; limit?: number }): string {
+  const conds = ["1=1"];
+  if (opts.supplier)
+    conds.push(`lower(supplier_name_norm) LIKE ${sqlLit(`%${opts.supplier.toLowerCase()}%`)}`);
+  return `SELECT council, title, supplier_name_raw, category, value,
+                 CAST(start_date AS VARCHAR) AS start_date,
+                 CAST(end_date AS VARCHAR) AS end_date
+          FROM ${parquet("contracts/contracts.parquet")}
+          WHERE ${conds.join(" AND ")}
+          ORDER BY value DESC NULLS LAST LIMIT ${opts.limit ?? 300}`;
+}

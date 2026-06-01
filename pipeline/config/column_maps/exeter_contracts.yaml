@@ -1,0 +1,49 @@
+# Exeter CC contracts register. Headers contain newlines and mojibake (mis-encoded
+# £); these normalize away (lowercase + strip non-alphanumeric), so the clean
+# variants below match the messy real headers.
+fields:
+  category:
+    - Directorate/Service Responsible
+    - Directorate
+    - Service
+  title:
+    - Contract Title
+    - Title
+  description:
+    - Description
+  contract_id:
+    - "Contract Ref:"
+    - Contract Ref
+    - Reference
+  supplier_name_raw:
+    - Contractor/Provider
+    - Contractor
+    - Provider
+    - Supplier
+  start_date:
+    - Original Start/Commencement Date
+    - Start Date
+    - Commencement Date
+  end_date:
+    - Current end date
+    - End Date
+  award_date:
+    - Award Date
+    - Date Awarded
+  procurement_ref:
+    - F.A.T or OJEU Ref / framework link/award notice link
+    - OJEU Ref
+    - Framework
+  value:
+    # Real header: "Est Total Awarded Contract value £'s (exc VAT) including
+    # allowed extensions and inflation" — normalizes to match this clean form.
+    - Est Total Awarded Contract value's (exc VAT) including allowed extensions and inflation
+    - Contract Value
+    - Value
+ignore:
+  - CPV code(s)
+  - Company Reg No
+  - SME or VSCE (inc. Reg. No.)
+  - Renewal / Review Date
+  - Invitation to quote/published invitation to tender?
+  - VAT not recovered

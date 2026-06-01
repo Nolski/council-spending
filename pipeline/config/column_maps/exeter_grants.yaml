@@ -1,0 +1,24 @@
+# Exeter CC grants ("grants-for-publication-YYYY-YY"). Files have a title/blank
+# preamble before the header row (detected via these variants).
+# Header: Cost centre description, Amount, Date, Description, Customer/Supplier Name
+fields:
+  grant_programme:
+    - Cost centre description
+    - Cost Centre Description
+    - Cost centre
+  amount:
+    - Amount
+  award_date:
+    - Date
+    - Award Date
+  purpose:
+    - Description
+    - Purpose
+  recipient_name_raw:
+    - Customer/Supplier Name
+    - Customer/Supplier
+    - Supplier Name
+    - Beneficiary
+ignore:
+  - Reference
+  - Transaction type

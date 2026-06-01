@@ -1,0 +1,29 @@
+# Exeter City Council spending CSV headers. The schema is stable across eras:
+#   Trans Date, Supplier Name, Trans Ref/No, Net Amount,
+#   Expense Description, Service Code, Category
+# Amounts are net of VAT (column is "Net Amount") -> amount_basis: net in config.
+fields:
+  payment_date:
+    - Trans Date
+    - Transaction Date
+    - Date
+  supplier_name_raw:
+    - Supplier Name
+    - Supplier
+    - Beneficiary
+  transaction_id:
+    - Trans Ref/No
+    - Trans Ref No
+    - Transaction Ref
+    - Transaction Number
+  amount:
+    - Net Amount
+    - Amount
+  expense_type:
+    - Expense Description
+    - Description
+  expense_area:
+    - Service Code
+    - Service
+  creditor_type:
+    - Category

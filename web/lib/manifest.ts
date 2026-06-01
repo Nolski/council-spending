@@ -19,6 +19,19 @@ export interface CouncilCoverage {
   date_max: string | null;
 }
 
+export interface GrantsDataset {
+  path: string;
+  total_rows: number;
+  by_council: { council: string; rows: number; total: number }[];
+}
+
+export interface ContractsDataset {
+  path: string;
+  total_rows: number;
+  total_value: number;
+  by_council: { council: string; rows: number }[];
+}
+
 export interface Manifest {
   generated_at: string;
   datasets: {
@@ -27,6 +40,8 @@ export interface Manifest {
       by_council: CouncilCoverage[];
       partitions: PartitionInfo[];
     };
+    grants?: GrantsDataset;
+    contracts?: ContractsDataset;
   };
   summaries: string[];
 }

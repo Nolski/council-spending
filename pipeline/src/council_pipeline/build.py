@@ -23,9 +23,9 @@ import structlog
 
 from . import paths
 from .config import SourceConfig, get_source, load_column_map, load_sources
-from .models import Council, Dataset
+from .models import CONTRACT_FIELDS, GRANT_FIELDS, Council, Dataset
 from .normalize import dates, money, redaction
-from .normalize.suppliers import SupplierResolver
+from .normalize.suppliers import SupplierResolver, normalize_name
 from .parsers.header_map import resolve_headers
 
 log = structlog.get_logger()
@@ -252,3 +252,195 @@ def build_spending(source_ids: list[str] | None = None) -> dict:
     manifest = _write_manifest(df, partitions)
     log.info("build complete", rows=df.height, suppliers=len(suppliers))
     return manifest
+
+
+# --------------------------------------------------------------------------
+# Generic canonical mapping (grants, contracts) — smaller entities written as a
+# single Parquet each, with provenance and raw preserved like spending.
+# --------------------------------------------------------------------------
+
+def _map_canonical(source: SourceConfig, df: pl.DataFrame, fields: list[str]) -> pl.DataFrame:
+    """Map a staging frame to canonical string columns + provenance.
+
+    Typed coercion (dates, amounts, supplier ids) is left to the entity builder.
+    """
+    cmap = load_column_map(source.column_map)
+    source_cols = [c for c in df.columns if c not in _PROV_INPUT]
+    mapping = resolve_headers(source_cols, cmap.all_variants(), cmap.ignore_set(), source.id)
+    n = df.height
+
+    out = {
+        "row_id": (
+            df["_source_file"].cast(pl.Utf8) + ":" + df["_source_row_index"].cast(pl.Utf8)
+        ),
+        "council": pl.Series([source.council] * n),
+        "dataset": pl.Series([str(source.dataset)] * n),
+        "source_file": df["_source_file"],
+        "source_url": df["_source_url"],
+        "fetched_at": df["_fetched_at"],
+        "source_row_index": df["_source_row_index"],
+        "raw": _raw_json_struct(df, source_cols),
+    }
+    canon = {f: pl.Series(f, [None] * n, dtype=pl.Utf8) for f in fields}
+    for orig, field in mapping.items():
+        if field in canon:
+            canon[field] = df[orig].cast(pl.Utf8).alias(field)
+    return pl.DataFrame({**out, **canon})
+
+
+def _coerce_dates(series: pl.Series) -> pl.Series:
+    return pl.Series(series.name, [dates.parse_date(v) for v in series], dtype=pl.Date)
+
+
+def _coerce_amounts(series: pl.Series, name: str) -> pl.Series:
+    vals = [money.parse_amount(v) for v in series]
+    return pl.Series(name, [float(a) if a is not None else None for a in vals])
+
+
+def _gather_canonical(dataset: str, fields: list[str]) -> pl.DataFrame | None:
+    """Map every staged file of every source for ``dataset`` to canonical rows."""
+    from .stage import load_staging_frames
+
+    sources = [s for s in load_sources().values() if s.dataset == dataset]
+    frames = []
+    for src in sources:
+        for staged in load_staging_frames(src):
+            frames.append(_map_canonical(src, staged, fields))
+    if not frames:
+        return None
+    return pl.concat(frames, how="vertical")
+
+
+def build_grants() -> dict | None:
+    """Build the grants entity → data/grants/grants.parquet + summary + manifest."""
+    df = _gather_canonical(Dataset.GRANTS, GRANT_FIELDS)
+    if df is None:
+        log.warning("no staged grants data; skipping")
+        return None
+
+    df = df.with_columns(
+        _coerce_dates(df["award_date"]),
+        _coerce_amounts(df["amount"], "amount"),
+        pl.col("row_id").alias("grant_id"),
+        pl.col("recipient_name_raw")
+        .map_elements(normalize_name, return_dtype=pl.Utf8)
+        .alias("recipient_name_norm"),
+        pl.Series("is_redacted", [redaction.is_redacted(v) for v in df["recipient_name_raw"]]),
+    ).with_columns(pl.col("award_date").dt.year().alias("financial_year"))
+
+    # Drop structural subtotal/total rows: these carry an Amount but no recipient
+    # (and usually no date), and would double-count the real grant payments.
+    before = df.height
+    df = df.filter(
+        pl.col("recipient_name_raw").is_not_null()
+        & (pl.col("recipient_name_raw").str.strip_chars() != "")
+    )
+    if before != df.height:
+        log.info("dropped grants subtotal rows", dropped=before - df.height)
+
+    paths.ensure_dirs()
+    out_dir = paths.PUBLISHED_DIR / "grants"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    df.write_parquet(out_dir / "grants.parquet")
+
+    grants = df.filter(pl.col("amount").is_not_null())
+    by_year = (
+        grants.group_by(["council", "financial_year"])
+        .agg(pl.col("amount").sum().alias("total"), pl.len().alias("grant_count"))
+        .sort(["council", "financial_year"])
+    )
+    (paths.PUBLISHED_DIR / "summary").mkdir(parents=True, exist_ok=True)
+    by_year.write_parquet(paths.PUBLISHED_DIR / "summary" / "grants_by_year.parquet")
+
+    fragment = {
+        "path": "grants/grants.parquet",
+        "total_rows": df.height,
+        "by_council": [
+            {"council": c, "rows": int(df.filter(pl.col("council") == c).height),
+             "total": float(grants.filter(pl.col("council") == c)["amount"].sum() or 0)}
+            for c in df["council"].unique().sort()
+        ],
+    }
+    _append_manifest("grants", fragment, ["summary/grants_by_year.parquet"])
+    _append_table("grants", df)
+    log.info("grants build complete", rows=df.height)
+    return fragment
+
+
+def build_contracts() -> dict | None:
+    """Build the contracts entity → data/contracts/contracts.parquet + manifest."""
+    df = _gather_canonical(Dataset.CONTRACTS, CONTRACT_FIELDS)
+    if df is None:
+        log.warning("no staged contracts data; skipping")
+        return None
+
+    df = df.with_columns(
+        _coerce_dates(df["start_date"]),
+        _coerce_dates(df["end_date"]),
+        _coerce_dates(df["award_date"]),
+        _coerce_amounts(df["value"], "value"),
+        pl.col("contract_id").fill_null(pl.col("row_id")),
+        pl.col("supplier_name_raw")
+        .map_elements(normalize_name, return_dtype=pl.Utf8)
+        .alias("supplier_name_norm"),
+    )
+
+    # Drop structural rows with neither a title nor a contractor (header/blank
+    # padding rows that some registers include).
+    df = df.filter(
+        (pl.col("title").is_not_null() & (pl.col("title").str.strip_chars() != ""))
+        | (pl.col("supplier_name_raw").is_not_null()
+           & (pl.col("supplier_name_raw").str.strip_chars() != ""))
+    )
+
+    paths.ensure_dirs()
+    out_dir = paths.PUBLISHED_DIR / "contracts"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    df.write_parquet(out_dir / "contracts.parquet")
+
+    valued = df.filter(pl.col("value").is_not_null())
+    fragment = {
+        "path": "contracts/contracts.parquet",
+        "total_rows": df.height,
+        "total_value": float(valued["value"].sum() or 0),
+        "by_council": [
+            {"council": c, "rows": int(df.filter(pl.col("council") == c).height)}
+            for c in df["council"].unique().sort()
+        ],
+    }
+    _append_manifest("contracts", fragment, [])
+    _append_table("contracts", df)
+    log.info("contracts build complete", rows=df.height)
+    return fragment
+
+
+def _append_manifest(dataset_key: str, fragment: dict, summaries: list[str]) -> None:
+    """Merge a dataset fragment into the existing manifest (create if absent)."""
+    if paths.MANIFEST_FILE.exists():
+        manifest = json.loads(paths.MANIFEST_FILE.read_text())
+    else:
+        manifest = {
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "datasets": {},
+            "summaries": [],
+        }
+    manifest.setdefault("datasets", {})[dataset_key] = fragment
+    existing = set(manifest.get("summaries", []))
+    manifest["summaries"] = sorted(existing.union(summaries))
+    paths.MANIFEST_FILE.write_text(json.dumps(manifest, indent=2))
+
+
+def _append_table(name: str, df: pl.DataFrame) -> None:
+    """Add/replace a table in the canonical DuckDB without dropping others."""
+    con = duckdb.connect(str(paths.CANONICAL_DB))
+    con.register("incoming_df", df.drop("raw").to_arrow())
+    con.execute(f"CREATE OR REPLACE TABLE {name} AS SELECT * FROM incoming_df")
+    con.close()
+
+
+def build_all(spending_source_ids: list[str] | None = None) -> dict:
+    """Build every dataset that has staged data, into one manifest + DuckDB."""
+    build_spending(spending_source_ids)  # resets manifest + duckdb (base dataset)
+    build_grants()
+    build_contracts()
+    return json.loads(paths.MANIFEST_FILE.read_text())

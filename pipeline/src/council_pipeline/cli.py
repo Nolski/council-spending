@@ -16,7 +16,7 @@ from rich.console import Console
 from rich.table import Table
 
 from . import paths
-from .build import build_spending
+from .build import build_all, build_contracts, build_grants, build_spending
 from .config import load_sources
 from .http import make_client
 from .provenance import Ledger
@@ -83,13 +83,29 @@ def stage(
 
 @app.command()
 def build(
+    dataset: str = typer.Option(
+        "all", help="Which dataset to build: all | spending | grants | contracts."
+    ),
     source: str = typer.Option(None, help="Limit spending build to this source id."),
 ) -> None:
     """Build canonical Parquet + summaries + manifest from staging data."""
     ids = [source] if source else None
-    manifest = build_spending(ids)
-    total = manifest["datasets"]["spending"]["total_rows"]
-    console.print(f"[green]Built spending[/]: {total} rows → {paths.PUBLISHED_DIR}")
+    if dataset == "all":
+        manifest = build_all(ids)
+        for name, d in manifest.get("datasets", {}).items():
+            console.print(f"[green]Built {name}[/]: {d.get('total_rows', '?')} rows")
+    elif dataset == "spending":
+        m = build_spending(ids)
+        console.print(f"[green]Built spending[/]: {m['datasets']['spending']['total_rows']} rows")
+    elif dataset == "grants":
+        build_grants()
+        console.print("[green]Built grants[/]")
+    elif dataset == "contracts":
+        build_contracts()
+        console.print("[green]Built contracts[/]")
+    else:
+        raise typer.BadParameter("dataset must be all|spending|grants|contracts")
+    console.print(f"→ {paths.PUBLISHED_DIR}")
 
 
 @app.command("run-all")

@@ -19,8 +19,12 @@ A monorepo with two decoupled halves joined by a **Parquet data contract**:
 | Council | Dataset | Source | Notes |
 |---------|---------|--------|-------|
 | Devon CC | Spending > £500 | [GitHub `Devon-County-Council/spending`](https://github.com/Devon-County-Council/spending) | Monthly CSV, 2011→present, stable URLs, OGL. |
-| Exeter CC | Spending > £250 | [Council spending page](https://exeter.gov.uk/council-and-democracy/council-information/council-data/council-spending/) | Quarterly XLSX/CSV behind hashed `/media/` links (scraped); pre-redacted. |
-| Both | Contracts & tenders, grants, senior salaries | Per [Local Government Transparency Code 2015](https://www.gov.uk/government/publications/local-government-transparency-code-2015/local-government-transparency-code-2015) | Added incrementally. |
+| Exeter CC | Spending > £250 | [Council spending page](https://exeter.gov.uk/council-and-democracy/council-information/council-data/council-spending/) | Quarterly CSV behind hashed `/media/` links (scraped); pre-redacted. |
+| Devon CC | Grants | [GitHub `Devon-County-Council/grants`](https://github.com/Devon-County-Council/grants) | Community/voluntary sector, 2014–2017. |
+| Exeter CC | Grants | [Grants awarded page](https://exeter.gov.uk/council-and-democracy/council-information/council-data/grants-awarded/) | Annual CSV, 2014→present (preamble rows handled). |
+| Exeter CC | Contracts & tenders | [Contracts page](https://exeter.gov.uk/council-and-democracy/council-information/council-data/contracts/) | Contracts register CSV. |
+| Devon CC | Contracts | [Contracts Finder](https://www.contractsfinder.service.gov.uk) | **Not yet ingested** — published via the OCDS API only, no flat file. |
+| Both | Senior salaries | Per [Local Government Transparency Code 2015](https://www.gov.uk/government/publications/local-government-transparency-code-2015/local-government-transparency-code-2015) | Not yet ingested. |
 
 All data is published under the Open Government Licence.
 

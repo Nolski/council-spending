@@ -7,6 +7,8 @@ const LINKS = [
   { href: "/", label: "Overview" },
   { href: "/spending", label: "Spending explorer" },
   { href: "/suppliers", label: "Suppliers" },
+  { href: "/contracts", label: "Contracts" },
+  { href: "/grants", label: "Grants" },
   { href: "/explore", label: "SQL console" },
 ];
 

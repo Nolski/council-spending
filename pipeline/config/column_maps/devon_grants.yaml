@@ -1,0 +1,27 @@
+# Devon CC grants to the community & voluntary sector (GitHub repo `grants`).
+# Header: Function, Service, Date Grant Awarded, Time Period for Grant,
+#         Grant Beneficiary, Beneficiary's registration Number, Purpose of Grant,
+#         Amount, Revenue / Capital
+fields:
+  award_date:
+    - Date Grant Awarded
+    - Award Date
+    - Date
+  recipient_name_raw:
+    - Grant Beneficiary
+    - Beneficiary
+    - Recipient
+  amount:
+    - Amount
+    - Grant Amount
+  purpose:
+    - Purpose of Grant
+    - Purpose
+  grant_programme:
+    - Service
+    - Function
+    - Programme
+ignore:
+  - Time Period for Grant
+  - Beneficiary's registration Number
+  - Revenue / Capital

@@ -23,7 +23,45 @@ sources:
     column_map: exeter_spending
     threshold_floor: 250
     licence: OGL
+    amount_basis: net              # Exeter publishes "Net Amount" (ex-VAT)
     # Exeter hides files behind hashed /media/<hash>/ links; we scrape the page.
     page_url: "https://exeter.gov.uk/council-and-democracy/council-information/council-data/council-spending/"
-    link_pattern: "spend"          # substring filter for candidate download links
-    file_extensions: [".csv", ".xlsx"]
+    # Take CSV only (XLSX is a duplicate of each quarter); exclude the separate
+    # procurement/credit-card dataset, which has a different schema.
+    file_extensions: [".csv"]
+    exclude_pattern: "credit-card"
+
+  # ---- Grants ----
+  devon_grants:
+    council: devon
+    dataset: grants
+    fetcher: github_listing
+    parser: tabular
+    column_map: devon_grants
+    licence: OGL
+    repo: Devon-County-Council/grants
+    branch: master
+    file_glob: "*.csv"
+
+  exeter_grants:
+    council: exeter
+    dataset: grants
+    fetcher: exeter_scrape
+    parser: tabular
+    column_map: exeter_grants
+    licence: OGL
+    page_url: "https://exeter.gov.uk/council-and-democracy/council-information/council-data/grants-awarded/"
+    file_extensions: [".csv"]
+
+  # ---- Contracts ----
+  # Devon publishes contracts only via Contracts Finder (OCDS API), not a flat
+  # file, so it is deferred. Exeter publishes a downloadable register.
+  exeter_contracts:
+    council: exeter
+    dataset: contracts
+    fetcher: exeter_scrape
+    parser: tabular
+    column_map: exeter_contracts
+    licence: OGL
+    page_url: "https://exeter.gov.uk/council-and-democracy/council-information/council-data/contracts/"
+    file_extensions: [".csv"]

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-01T15:59:08.190465+00:00",
+  "generated_at": "2026-06-01T17:06:29.528996+00:00",
   "datasets": {
     "spending": {
       "partitioning": [
@@ -7,14 +7,21 @@
         "year"
       ],
       "path": "spending/council=<council>/year=<year>/part.parquet",
-      "total_rows": 1529542,
+      "total_rows": 1589719,
       "by_council": [
         {
           "council": "devon",
           "rows": 1529542,
-          "total_spend": 9654201067.223198,
+          "total_spend": 9654201067.2232,
           "date_min": "2011-01-04",
           "date_max": "2026-03-31"
+        },
+        {
+          "council": "exeter",
+          "rows": 60177,
+          "total_spend": 317782174.87,
+          "date_min": "2021-04-01",
+          "date_max": "2026-04-15"
         }
       ],
       "partitions": [
@@ -119,14 +126,84 @@
           "year": 2026,
           "path": "spending/council=devon/year=2026/part.parquet",
           "rows": 8732
+        },
+        {
+          "council": "exeter",
+          "year": 0,
+          "path": "spending/council=exeter/year=0/part.parquet",
+          "rows": 12
+        },
+        {
+          "council": "exeter",
+          "year": 2021,
+          "path": "spending/council=exeter/year=2021/part.parquet",
+          "rows": 8051
+        },
+        {
+          "council": "exeter",
+          "year": 2022,
+          "path": "spending/council=exeter/year=2022/part.parquet",
+          "rows": 12304
+        },
+        {
+          "council": "exeter",
+          "year": 2023,
+          "path": "spending/council=exeter/year=2023/part.parquet",
+          "rows": 12624
+        },
+        {
+          "council": "exeter",
+          "year": 2024,
+          "path": "spending/council=exeter/year=2024/part.parquet",
+          "rows": 11831
+        },
+        {
+          "council": "exeter",
+          "year": 2025,
+          "path": "spending/council=exeter/year=2025/part.parquet",
+          "rows": 12437
+        },
+        {
+          "council": "exeter",
+          "year": 2026,
+          "path": "spending/council=exeter/year=2026/part.parquet",
+          "rows": 2918
+        }
+      ]
+    },
+    "grants": {
+      "path": "grants/grants.parquet",
+      "total_rows": 4723,
+      "by_council": [
+        {
+          "council": "devon",
+          "rows": 2795,
+          "total": 11798257.520000001
+        },
+        {
+          "council": "exeter",
+          "rows": 1928,
+          "total": 7193472.52
+        }
+      ]
+    },
+    "contracts": {
+      "path": "contracts/contracts.parquet",
+      "total_rows": 224,
+      "total_value": 168974432.4,
+      "by_council": [
+        {
+          "council": "exeter",
+          "rows": 224
         }
       ]
     }
   },
   "summaries": [
-    "summary/spend_by_month.parquet",
-    "summary/spend_by_supplier.parquet",
+    "summary/dim_suppliers.parquet",
+    "summary/grants_by_year.parquet",
     "summary/spend_by_department.parquet",
-    "summary/dim_suppliers.parquet"
+    "summary/spend_by_month.parquet",
+    "summary/spend_by_supplier.parquet"
   ]
 }

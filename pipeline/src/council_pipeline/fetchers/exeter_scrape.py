@@ -26,7 +26,8 @@ def _slugify(text: str) -> str:
 class ExeterScrapeFetcher(Fetcher):
     def discover(self, client: httpx.Client) -> list[RemoteFile]:
         page_url = self.source.page_url
-        pattern = getattr(self.source, "link_pattern", "").lower()
+        pattern = (getattr(self.source, "link_pattern", "") or "").lower()
+        exclude = (getattr(self.source, "exclude_pattern", "") or "").lower()
         exts = tuple(getattr(self.source, "file_extensions", [".csv", ".xlsx"]))
 
         resp = client.get(page_url)
@@ -44,6 +45,8 @@ class ExeterScrapeFetcher(Fetcher):
             link_text = a.get_text(" ", strip=True)
             haystack = f"{path} {link_text}".lower()
             if pattern and pattern not in haystack:
+                continue
+            if exclude and exclude in haystack:
                 continue
             if url in seen:
                 continue

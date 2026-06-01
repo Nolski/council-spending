@@ -14,7 +14,7 @@ import polars as pl
 import structlog
 
 from . import paths
-from .config import SourceConfig
+from .config import SourceConfig, load_column_map
 from .parsers.readers import read_tabular
 from .provenance import Ledger
 
@@ -34,6 +34,8 @@ def stage_source(source: SourceConfig, ledger: Ledger, *, force: bool = False) -
         return 0
 
     by_filename = {e["filename"]: e for e in ledger.entries_for_source(source.id)}
+    # Known header variants let the reader skip preamble rows before the header.
+    header_hints = set(load_column_map(source.column_map).all_variants())
     staged = 0
 
     for raw_file in sorted(raw_d.iterdir()):
@@ -47,7 +49,7 @@ def stage_source(source: SourceConfig, ledger: Ledger, *, force: bool = False) -
         ):
             continue
 
-        df = read_tabular(raw_file)
+        df = read_tabular(raw_file, header_hints=header_hints)
         meta = by_filename.get(raw_file.name, {})
         df = df.with_columns(
             pl.lit(raw_file.name).alias("_source_file"),

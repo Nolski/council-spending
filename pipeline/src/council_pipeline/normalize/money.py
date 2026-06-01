@@ -13,7 +13,10 @@ from __future__ import annotations
 import re
 from decimal import Decimal, InvalidOperation
 
-_STRIP = re.compile(r"[£$,\s]")
+# Keep only number-relevant characters. This drops currency symbols, thousands
+# separators, stray letters, and mojibake like the replacement char that appears
+# where a mis-encoded "£" was (common in council XLSX→CSV exports).
+_NON_NUMERIC = re.compile(r"[^0-9.()\-]")
 
 
 def parse_amount(value: object) -> Decimal | None:
@@ -29,15 +32,19 @@ def parse_amount(value: object) -> Decimal | None:
     if not s:
         return None
 
+    s = _NON_NUMERIC.sub("", s)
+
     negative = False
     if s.startswith("(") and s.endswith(")"):
         negative = True
         s = s[1:-1]
-
-    s = _STRIP.sub("", s)
+    s = s.replace("(", "").replace(")", "")
     if s.endswith("-"):  # trailing-minus convention
         negative = True
         s = s[:-1]
+    if s.startswith("-"):
+        negative = True
+        s = s[1:]
     if not s or s in {"-", "."}:
         return None
 
