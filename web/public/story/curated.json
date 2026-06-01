@@ -1,0 +1,44 @@
+{
+  "_note": "Hand-authored external figures used by the essay. kind: verified | illustrative. Every entry carries its source.",
+  "funding_cut_pct": { "value": "18%", "label": "real-terms cut in council core funding per resident since 2010-11", "kind": "verified", "source": "IFS (2024)", "url": "https://ifs.org.uk/news/core-funding-english-councils-still-18-lower-resident-2010-11-and-costs-are-rising" },
+  "regressive": { "value": "26% vs 11%", "label": "funding fell over twice as far in the poorest tenth of areas as in the richest — austerity by design", "kind": "verified", "source": "IFS (2024)", "url": "https://ifs.org.uk/publications/how-have-english-councils-funding-and-spending-changed-2010-2024" },
+  "efs": { "value": "£1.6bn", "label": "emergency central support to councils in 2024/25, up from £79.9m in 2018/19 — a system on life support", "kind": "verified", "source": "Institute for Government (2025)", "url": "https://www.instituteforgovernment.org.uk/publication/performance-tracker-2025/local-services/overview" },
+  "service_shift": {
+    "kind": "verified",
+    "source": "IFS (2024), 2010-11 → 2023-24",
+    "url": "https://ifs.org.uk/publications/how-have-english-councils-funding-and-spending-changed-2010-2024",
+    "items": [
+      { "service": "Social care (share of budget)", "change": 30 },
+      { "service": "Housing", "change": -33 },
+      { "service": "Highways & transport", "change": -45 },
+      { "service": "Culture & leisure", "change": -45 },
+      { "service": "Planning & development", "change": -45 },
+      { "service": "Youth & Sure Start", "change": -70 }
+    ]
+  },
+  "care_leakage": { "value": "~£1.5bn", "label": "a year leaks out of the UK care-home sector as profit, debt interest, rent and fees (~10% of income) — the market Devon's £3.5bn buys into", "kind": "verified", "source": "CHPI, Plugging the Leaks (2019)", "url": "https://www.chpi.org.uk/reports/plugging-the-leaks-in-the-uk-care-home-industry" },
+  "temp_accommodation": { "value": "£2.84bn", "label": "England's temporary-accommodation bill in 2024/25 (+118% in five years); councils' own unsubsidised share rose from 7% to 51%", "kind": "verified", "source": "Shelter / LGA (2025)", "url": "https://england.shelter.org.uk/media/press_release/bill_for_homeless_accommodation_soars_by_25_hitting_28_bn_" },
+  "exeter_city_living": { "value": "22 homes", "label": "delivered by Exeter's for-sale development company before it was wound up — £4.5m+ losses, ~£10.1m owed, against a 675-home target. The cautionary local lesson: build to rent (HRA), not to sell.", "kind": "verified", "source": "Exeter Observer (Oct 2023)", "url": "https://exeterobserver.org/2023/10/06/exeter-city-living-4.5-million-losses-10-million-owed-exeter-city-council-resulting-sale-value-clifton-hill-development-site-not-cover-company-debts-liveable-exeter-vision-doubt-councillors-evade-responsibility-failure/" },
+  "preston": { "from": 5, "to": 18.2, "amount": "£74m", "label": "extra anchor-institution spend redirected into Preston's local economy (5% → 18.2%)", "kind": "verified", "source": "CLES, The Preston Model", "url": "https://cles.org.uk/the-preston-model/" },
+  "energy_compare": {
+    "kind": "verified",
+    "source": "Warrington BC; TaxPayers' Alliance tally",
+    "url": "https://www.taxpayersalliance.com/council_energy_firms_lose_114_million",
+    "items": [
+      { "label": "Warrington solar dividend (generation asset)", "value": 2.4, "good": true },
+      { "label": "Bristol Energy loss (retail supply)", "value": -40, "good": false },
+      { "label": "Robin Hood Energy loss (retail supply)", "value": -34, "good": false }
+    ]
+  },
+  "cmi": { "value": "~£6.4m", "label": "raised directly from residents via local climate bonds across 8 councils since 2020 — cheaper than PWLB, but modest", "kind": "verified", "source": "Zero Carbon Accelerator", "url": "https://zerocarbonaccelerator.london/green-funding-and-finance/community-municipal-investment-cmi-local-climate-bonds-lcbs/" },
+  "land_value": { "value": "~75%", "label": "of land-value uplift on new development goes uncaptured; >£8bn in developer contributions sits unspent", "kind": "verified", "source": "HCLG Committee, Land Value Capture", "url": "https://publications.parliament.uk/pa/cm201719/cmselect/cmcomloc/766/76606.htm" },
+  "cautionary": { "value": "£1.2bn / £1.5bn", "label": "debt at Woking and losses at Thurrock from speculative commercial bets — why borrowing to buy assets 'primarily for yield' was banned in 2020. Productive assets yes; financial speculation no.", "kind": "verified", "source": "Public Finance; Arlingclose", "url": "https://www.publicfinance.co.uk/news/2023/06/woking-issues-section-114-notice" },
+  "rent_vs_build": {
+    "kind": "illustrative",
+    "source": "Illustrative scenario — not a forecast; shows the structural logic of asset vs. liability",
+    "note": "A one-off capital home (built/acquired) becomes a rent-yielding asset; nightly-paid temporary accommodation is a permanent, unsubsidised cost that recurs every year.",
+    "years": [1, 5, 10, 15, 20],
+    "temp_accommodation": [12, 60, 120, 180, 240],
+    "council_home": [200, 160, 110, 50, -20]
+  }
+}

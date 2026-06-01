@@ -1,0 +1,1124 @@
+{
+  "meta": {
+    "note": "our analysis of published spend-over-\u00a3500 (Devon) / \u00a3250 (Exeter) transparency data; ~58% of spend value is classified; sole-trader payee names are redacted; figures are directional.",
+    "classified_pct": 58.4
+  },
+  "totals": {
+    "devon": {
+      "rows": 1529542,
+      "total_spend": 9654201067.2232,
+      "date_min": "2011-01-04",
+      "date_max": "2026-03-31"
+    },
+    "exeter": {
+      "rows": 60177,
+      "total_spend": 317782174.87,
+      "date_min": "2021-04-01",
+      "date_max": "2026-04-15"
+    }
+  },
+  "category_totals": [
+    {
+      "council": "devon",
+      "spend_category": "unclassified",
+      "total": 3893070212.767499,
+      "txn_count": 664521
+    },
+    {
+      "council": "devon",
+      "spend_category": "care_provider",
+      "total": 3477070986.2625003,
+      "txn_count": 638031
+    },
+    {
+      "council": "devon",
+      "spend_category": "highways_construction",
+      "total": 1006143031.5650002,
+      "txn_count": 66531
+    },
+    {
+      "council": "devon",
+      "spend_category": "waste",
+      "total": 372427651.33720005,
+      "txn_count": 7260
+    },
+    {
+      "council": "devon",
+      "spend_category": "special_school_placement",
+      "total": 353366205.4999999,
+      "txn_count": 13035
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "total": 274087436.56,
+      "txn_count": 71614
+    },
+    {
+      "council": "exeter",
+      "spend_category": "unclassified",
+      "total": 252324200.72000006,
+      "txn_count": 45492
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "total": 162234359.54,
+      "txn_count": 27420
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "total": 115745515.77100001,
+      "txn_count": 22564
+    },
+    {
+      "council": "exeter",
+      "spend_category": "highways_construction",
+      "total": 23738894.650000006,
+      "txn_count": 509
+    },
+    {
+      "council": "exeter",
+      "spend_category": "consultants",
+      "total": 16163500.259999996,
+      "txn_count": 2486
+    },
+    {
+      "council": "exeter",
+      "spend_category": "agency_staff",
+      "total": 11991673.629999995,
+      "txn_count": 8705
+    },
+    {
+      "council": "exeter",
+      "spend_category": "temporary_accommodation",
+      "total": 5960475.81,
+      "txn_count": 1119
+    },
+    {
+      "council": "exeter",
+      "spend_category": "waste",
+      "total": 5775392.949999999,
+      "txn_count": 1396
+    },
+    {
+      "council": "exeter",
+      "spend_category": "it_systems",
+      "total": 1828036.8499999999,
+      "txn_count": 449
+    },
+    {
+      "council": "devon",
+      "spend_category": "send_transport",
+      "total": 55667.92,
+      "txn_count": 54
+    }
+  ],
+  "category_annual": [
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "year": "2011",
+      "total": 6298684.24
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "year": "2012",
+      "total": 7369086.945
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "year": "2013",
+      "total": 9767561.47
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "year": "2014",
+      "total": 11991733.97
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "year": "2015",
+      "total": 13049471.535
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "year": "2016",
+      "total": 11512174.765
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "year": "2017",
+      "total": 12513116.605
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "year": "2018",
+      "total": 14179867.1
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "year": "2019",
+      "total": 17330458.91
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "year": "2020",
+      "total": 22579239.39
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "year": "2021",
+      "total": 28871531.91
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "year": "2022",
+      "total": 36017642.94
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "year": "2023",
+      "total": 35584128.33
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "year": "2024",
+      "total": 34515043.5
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "year": "2025",
+      "total": 11399934.87
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "year": "2026",
+      "total": 1107760.08
+    },
+    {
+      "council": "devon",
+      "spend_category": "care_provider",
+      "year": "2011",
+      "total": 110343645.17
+    },
+    {
+      "council": "devon",
+      "spend_category": "care_provider",
+      "year": "2012",
+      "total": 125942987.94
+    },
+    {
+      "council": "devon",
+      "spend_category": "care_provider",
+      "year": "2013",
+      "total": 137103668.98
+    },
+    {
+      "council": "devon",
+      "spend_category": "care_provider",
+      "year": "2014",
+      "total": 140779042.82
+    },
+    {
+      "council": "devon",
+      "spend_category": "care_provider",
+      "year": "2015",
+      "total": 157658058.13
+    },
+    {
+      "council": "devon",
+      "spend_category": "care_provider",
+      "year": "2016",
+      "total": 153619032.7625
+    },
+    {
+      "council": "devon",
+      "spend_category": "care_provider",
+      "year": "2017",
+      "total": 203521929.17000002
+    },
+    {
+      "council": "devon",
+      "spend_category": "care_provider",
+      "year": "2018",
+      "total": 226920962.21
+    },
+    {
+      "council": "devon",
+      "spend_category": "care_provider",
+      "year": "2019",
+      "total": 254731862.94
+    },
+    {
+      "council": "devon",
+      "spend_category": "care_provider",
+      "year": "2020",
+      "total": 305193510.85
+    },
+    {
+      "council": "devon",
+      "spend_category": "care_provider",
+      "year": "2021",
+      "total": 329707395.1
+    },
+    {
+      "council": "devon",
+      "spend_category": "care_provider",
+      "year": "2022",
+      "total": 367573839.02
+    },
+    {
+      "council": "devon",
+      "spend_category": "care_provider",
+      "year": "2023",
+      "total": 385705655.09
+    },
+    {
+      "council": "devon",
+      "spend_category": "care_provider",
+      "year": "2024",
+      "total": 423445066.34
+    },
+    {
+      "council": "devon",
+      "spend_category": "care_provider",
+      "year": "2025",
+      "total": 141219739.62
+    },
+    {
+      "council": "devon",
+      "spend_category": "care_provider",
+      "year": "2026",
+      "total": 13604590.12
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "year": "2011",
+      "total": 6782045.78
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "year": "2012",
+      "total": 2813269.85
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "year": "2013",
+      "total": 4927372.99
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "year": "2014",
+      "total": 5163055.69
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "year": "2015",
+      "total": 3853593.11
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "year": "2016",
+      "total": 3794928.0300000003
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "year": "2017",
+      "total": 14848944.84
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "year": "2018",
+      "total": 22398615.77
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "year": "2019",
+      "total": 11138047.81
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "year": "2020",
+      "total": 9822808.18
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "year": "2021",
+      "total": 12423397.86
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "year": "2022",
+      "total": 13061457.73
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "year": "2023",
+      "total": 16139543.6
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "year": "2024",
+      "total": 15920709.5
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "year": "2025",
+      "total": 15445945.57
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "year": "2026",
+      "total": 3700623.23
+    },
+    {
+      "council": "devon",
+      "spend_category": "highways_construction",
+      "year": "2011",
+      "total": 21355683.98
+    },
+    {
+      "council": "devon",
+      "spend_category": "highways_construction",
+      "year": "2012",
+      "total": 27222080.325
+    },
+    {
+      "council": "devon",
+      "spend_category": "highways_construction",
+      "year": "2013",
+      "total": 39749009.69
+    },
+    {
+      "council": "devon",
+      "spend_category": "highways_construction",
+      "year": "2014",
+      "total": 24778542.68
+    },
+    {
+      "council": "devon",
+      "spend_category": "highways_construction",
+      "year": "2015",
+      "total": 24029735.71
+    },
+    {
+      "council": "devon",
+      "spend_category": "highways_construction",
+      "year": "2016",
+      "total": 24409744.25
+    },
+    {
+      "council": "devon",
+      "spend_category": "highways_construction",
+      "year": "2017",
+      "total": 59459542.22
+    },
+    {
+      "council": "devon",
+      "spend_category": "highways_construction",
+      "year": "2018",
+      "total": 88497837.18
+    },
+    {
+      "council": "devon",
+      "spend_category": "highways_construction",
+      "year": "2019",
+      "total": 94489776.82
+    },
+    {
+      "council": "devon",
+      "spend_category": "highways_construction",
+      "year": "2020",
+      "total": 101507886.17
+    },
+    {
+      "council": "devon",
+      "spend_category": "highways_construction",
+      "year": "2021",
+      "total": 108098561.73
+    },
+    {
+      "council": "devon",
+      "spend_category": "highways_construction",
+      "year": "2022",
+      "total": 109973833.03999999
+    },
+    {
+      "council": "devon",
+      "spend_category": "highways_construction",
+      "year": "2023",
+      "total": 85076477.32
+    },
+    {
+      "council": "devon",
+      "spend_category": "highways_construction",
+      "year": "2024",
+      "total": 78089079.83
+    },
+    {
+      "council": "devon",
+      "spend_category": "highways_construction",
+      "year": "2025",
+      "total": 82344188.92
+    },
+    {
+      "council": "devon",
+      "spend_category": "highways_construction",
+      "year": "2026",
+      "total": 37061051.7
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "year": "2011",
+      "total": 2295631.88
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "year": "2012",
+      "total": 2197680.68
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "year": "2013",
+      "total": 4791667.962
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "year": "2014",
+      "total": 5032157.37
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "year": "2015",
+      "total": 5333725.7085
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "year": "2016",
+      "total": 4910923.1905
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "year": "2017",
+      "total": 7389762.69
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "year": "2018",
+      "total": 8337121.78
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "year": "2019",
+      "total": 9740553.61
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "year": "2020",
+      "total": 8254533.8
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "year": "2021",
+      "total": 9443464.72
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "year": "2022",
+      "total": 10844229.7
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "year": "2023",
+      "total": 11382061.33
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "year": "2024",
+      "total": 13897828.15
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "year": "2025",
+      "total": 9072128.51
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "year": "2026",
+      "total": 2822044.69
+    },
+    {
+      "council": "devon",
+      "spend_category": "special_school_placement",
+      "year": "2011",
+      "total": 4602813.32
+    },
+    {
+      "council": "devon",
+      "spend_category": "special_school_placement",
+      "year": "2012",
+      "total": 5066783.81
+    },
+    {
+      "council": "devon",
+      "spend_category": "special_school_placement",
+      "year": "2013",
+      "total": 5907190.94
+    },
+    {
+      "council": "devon",
+      "spend_category": "special_school_placement",
+      "year": "2014",
+      "total": 8096679.5
+    },
+    {
+      "council": "devon",
+      "spend_category": "special_school_placement",
+      "year": "2015",
+      "total": 9400803.07
+    },
+    {
+      "council": "devon",
+      "spend_category": "special_school_placement",
+      "year": "2016",
+      "total": 13079946.99
+    },
+    {
+      "council": "devon",
+      "spend_category": "special_school_placement",
+      "year": "2017",
+      "total": 13795000.33
+    },
+    {
+      "council": "devon",
+      "spend_category": "special_school_placement",
+      "year": "2018",
+      "total": 15079678.719999999
+    },
+    {
+      "council": "devon",
+      "spend_category": "special_school_placement",
+      "year": "2019",
+      "total": 22333127.25
+    },
+    {
+      "council": "devon",
+      "spend_category": "special_school_placement",
+      "year": "2020",
+      "total": 29118584.55
+    },
+    {
+      "council": "devon",
+      "spend_category": "special_school_placement",
+      "year": "2021",
+      "total": 36904696.8
+    },
+    {
+      "council": "devon",
+      "spend_category": "special_school_placement",
+      "year": "2022",
+      "total": 45818343.33
+    },
+    {
+      "council": "devon",
+      "spend_category": "special_school_placement",
+      "year": "2023",
+      "total": 44939115.019999996
+    },
+    {
+      "council": "devon",
+      "spend_category": "special_school_placement",
+      "year": "2024",
+      "total": 42283747.33
+    },
+    {
+      "council": "devon",
+      "spend_category": "special_school_placement",
+      "year": "2025",
+      "total": 41874940.26
+    },
+    {
+      "council": "devon",
+      "spend_category": "special_school_placement",
+      "year": "2026",
+      "total": 15064754.280000001
+    },
+    {
+      "council": "exeter",
+      "spend_category": "agency_staff",
+      "year": "2021",
+      "total": 1015267.51
+    },
+    {
+      "council": "exeter",
+      "spend_category": "agency_staff",
+      "year": "2022",
+      "total": 1821306.08
+    },
+    {
+      "council": "exeter",
+      "spend_category": "agency_staff",
+      "year": "2023",
+      "total": 2762748.07
+    },
+    {
+      "council": "exeter",
+      "spend_category": "agency_staff",
+      "year": "2024",
+      "total": 2495928.02
+    },
+    {
+      "council": "exeter",
+      "spend_category": "agency_staff",
+      "year": "2025",
+      "total": 3073571.04
+    },
+    {
+      "council": "exeter",
+      "spend_category": "agency_staff",
+      "year": "2026",
+      "total": 822852.91
+    },
+    {
+      "council": "exeter",
+      "spend_category": "consultants",
+      "year": "2021",
+      "total": 945995.12
+    },
+    {
+      "council": "exeter",
+      "spend_category": "consultants",
+      "year": "2022",
+      "total": 1967252.57
+    },
+    {
+      "council": "exeter",
+      "spend_category": "consultants",
+      "year": "2023",
+      "total": 2061697.2
+    },
+    {
+      "council": "exeter",
+      "spend_category": "consultants",
+      "year": "2024",
+      "total": 4591789.04
+    },
+    {
+      "council": "exeter",
+      "spend_category": "consultants",
+      "year": "2025",
+      "total": 5569383.68
+    },
+    {
+      "council": "exeter",
+      "spend_category": "consultants",
+      "year": "2026",
+      "total": 1027382.65
+    },
+    {
+      "council": "exeter",
+      "spend_category": "highways_construction",
+      "year": "2021",
+      "total": 10744287.06
+    },
+    {
+      "council": "exeter",
+      "spend_category": "highways_construction",
+      "year": "2022",
+      "total": 5073595.07
+    },
+    {
+      "council": "exeter",
+      "spend_category": "highways_construction",
+      "year": "2023",
+      "total": 3013940.95
+    },
+    {
+      "council": "exeter",
+      "spend_category": "highways_construction",
+      "year": "2024",
+      "total": 3017526.1899999995
+    },
+    {
+      "council": "exeter",
+      "spend_category": "highways_construction",
+      "year": "2025",
+      "total": 1575773.1
+    },
+    {
+      "council": "exeter",
+      "spend_category": "highways_construction",
+      "year": "2026",
+      "total": 313772.27999999997
+    },
+    {
+      "council": "exeter",
+      "spend_category": "it_systems",
+      "year": "2021",
+      "total": 168814.30000000002
+    },
+    {
+      "council": "exeter",
+      "spend_category": "it_systems",
+      "year": "2022",
+      "total": 339419.51
+    },
+    {
+      "council": "exeter",
+      "spend_category": "it_systems",
+      "year": "2023",
+      "total": 392326.34
+    },
+    {
+      "council": "exeter",
+      "spend_category": "it_systems",
+      "year": "2024",
+      "total": 340893.54
+    },
+    {
+      "council": "exeter",
+      "spend_category": "it_systems",
+      "year": "2025",
+      "total": 531491.35
+    },
+    {
+      "council": "exeter",
+      "spend_category": "it_systems",
+      "year": "2026",
+      "total": 55091.810000000005
+    },
+    {
+      "council": "exeter",
+      "spend_category": "temporary_accommodation",
+      "year": "2021",
+      "total": 572895.86
+    },
+    {
+      "council": "exeter",
+      "spend_category": "temporary_accommodation",
+      "year": "2022",
+      "total": 1676400.52
+    },
+    {
+      "council": "exeter",
+      "spend_category": "temporary_accommodation",
+      "year": "2023",
+      "total": 1097933.95
+    },
+    {
+      "council": "exeter",
+      "spend_category": "temporary_accommodation",
+      "year": "2024",
+      "total": 1608970.72
+    },
+    {
+      "council": "exeter",
+      "spend_category": "temporary_accommodation",
+      "year": "2025",
+      "total": 906915.61
+    },
+    {
+      "council": "exeter",
+      "spend_category": "temporary_accommodation",
+      "year": "2026",
+      "total": 97359.15
+    }
+  ],
+  "concentration": [
+    {
+      "council": "devon",
+      "year": 2011,
+      "top10_pct": 24.051031847117706,
+      "n_suppliers": 7008,
+      "total": 326340569.4563
+    },
+    {
+      "council": "devon",
+      "year": 2012,
+      "top10_pct": 26.076108483561374,
+      "n_suppliers": 5589,
+      "total": 359331711.4556
+    },
+    {
+      "council": "devon",
+      "year": 2013,
+      "top10_pct": 26.78480629701216,
+      "n_suppliers": 6762,
+      "total": 447526847.5
+    },
+    {
+      "council": "devon",
+      "year": 2014,
+      "top10_pct": 25.883725592082335,
+      "n_suppliers": 6916,
+      "total": 442949733.5
+    },
+    {
+      "council": "devon",
+      "year": 2015,
+      "top10_pct": 24.199224395106167,
+      "n_suppliers": 6794,
+      "total": 463614800.3681
+    },
+    {
+      "council": "devon",
+      "year": 2016,
+      "top10_pct": 26.11456548883305,
+      "n_suppliers": 6772,
+      "total": 470038629.2182
+    },
+    {
+      "council": "devon",
+      "year": 2017,
+      "top10_pct": 21.730682077083504,
+      "n_suppliers": 6840,
+      "total": 576798116.025
+    },
+    {
+      "council": "devon",
+      "year": 2018,
+      "top10_pct": 24.510509519202845,
+      "n_suppliers": 6599,
+      "total": 629020869.31
+    },
+    {
+      "council": "devon",
+      "year": 2019,
+      "top10_pct": 22.453521910942474,
+      "n_suppliers": 6561,
+      "total": 656208657.53
+    },
+    {
+      "council": "devon",
+      "year": 2020,
+      "top10_pct": 19.786855185735973,
+      "n_suppliers": 6515,
+      "total": 738913567.96
+    },
+    {
+      "council": "devon",
+      "year": 2021,
+      "top10_pct": 17.41100153802681,
+      "n_suppliers": 6640,
+      "total": 825060761.13
+    },
+    {
+      "council": "devon",
+      "year": 2022,
+      "top10_pct": 15.124543931049642,
+      "n_suppliers": 6797,
+      "total": 902623286.84
+    },
+    {
+      "council": "devon",
+      "year": 2023,
+      "top10_pct": 14.849258036585148,
+      "n_suppliers": 6645,
+      "total": 924262237.56
+    },
+    {
+      "council": "devon",
+      "year": 2024,
+      "top10_pct": 17.696309416390235,
+      "n_suppliers": 6874,
+      "total": 1030869871.89
+    },
+    {
+      "council": "devon",
+      "year": 2025,
+      "top10_pct": 23.13521720982463,
+      "n_suppliers": 5031,
+      "total": 565164720.15
+    },
+    {
+      "council": "devon",
+      "year": 2026,
+      "top10_pct": 37.07341090104758,
+      "n_suppliers": 1385,
+      "total": 128548180.52
+    },
+    {
+      "council": "exeter",
+      "year": 2021,
+      "top10_pct": 61.18126122821796,
+      "n_suppliers": 1039,
+      "total": 47931665.45
+    },
+    {
+      "council": "exeter",
+      "year": 2022,
+      "top10_pct": 49.12236570111128,
+      "n_suppliers": 1335,
+      "total": 62031871.44
+    },
+    {
+      "council": "exeter",
+      "year": 2023,
+      "top10_pct": 49.316601396587444,
+      "n_suppliers": 1270,
+      "total": 61219549.31
+    },
+    {
+      "council": "exeter",
+      "year": 2024,
+      "top10_pct": 52.35706155935721,
+      "n_suppliers": 1190,
+      "total": 69472696.99
+    },
+    {
+      "council": "exeter",
+      "year": 2025,
+      "top10_pct": 53.69952907006673,
+      "n_suppliers": 1195,
+      "total": 64815414.87
+    },
+    {
+      "council": "exeter",
+      "year": 2026,
+      "top10_pct": 53.180445638415584,
+      "n_suppliers": 581,
+      "total": 12310976.81
+    }
+  ],
+  "top_suppliers": [
+    {
+      "council": "devon",
+      "supplier_id_canonical": "sup_b009ff1419a6",
+      "supplier_name_norm": "south west highways head off",
+      "total": 202896027.335
+    },
+    {
+      "council": "devon",
+      "supplier_id_canonical": "sup_c825741f161b",
+      "supplier_name_norm": "milestone infrastructure",
+      "total": 197715932.85
+    },
+    {
+      "council": "devon",
+      "supplier_id_canonical": "sup_36d3c1eb9be4",
+      "supplier_name_norm": "viridor waste management",
+      "total": 196017383.25
+    },
+    {
+      "council": "devon",
+      "supplier_id_canonical": "sup_a85c21654df8",
+      "supplier_name_norm": "modern schools exeter",
+      "total": 189069882.66
+    },
+    {
+      "council": "devon",
+      "supplier_id_canonical": null,
+      "supplier_name_norm": null,
+      "total": 166928506.81
+    },
+    {
+      "council": "devon",
+      "supplier_id_canonical": "sup_dfaeee303342",
+      "supplier_name_norm": "skanska construction",
+      "total": 159358825.03
+    },
+    {
+      "council": "devon",
+      "supplier_id_canonical": "sup_d1e48be7fa9b",
+      "supplier_name_norm": "northern devon healthcare trust",
+      "total": 125124617.92
+    },
+    {
+      "council": "devon",
+      "supplier_id_canonical": "sup_ec9d9d112027",
+      "supplier_name_norm": "babcock learning development",
+      "total": 115534157.04
+    },
+    {
+      "council": "devon",
+      "supplier_id_canonical": "sup_bd07253dd14a",
+      "supplier_name_norm": "suez recycling recovery",
+      "total": 108251687.2
+    },
+    {
+      "council": "devon",
+      "supplier_id_canonical": "sup_6bd5ed19ca04",
+      "supplier_name_norm": "stagecoach devon",
+      "total": 102274664.07000001
+    },
+    {
+      "council": "devon",
+      "supplier_id_canonical": "sup_a3c6ce9142f9",
+      "supplier_name_norm": "redacted under dp act",
+      "total": 82742529.95
+    },
+    {
+      "council": "devon",
+      "supplier_id_canonical": "sup_c5a3e8edd379",
+      "supplier_name_norm": "action for children",
+      "total": 70337859.57
+    },
+    {
+      "council": "devon",
+      "supplier_id_canonical": "sup_a580ef453714",
+      "supplier_name_norm": "libraries unlimited south west",
+      "total": 69971224.51
+    },
+    {
+      "council": "devon",
+      "supplier_id_canonical": "sup_8ac29f1211ec",
+      "supplier_name_norm": "m group highways",
+      "total": 66437922.92
+    },
+    {
+      "council": "devon",
+      "supplier_id_canonical": "sup_7199cb80da2a",
+      "supplier_name_norm": "geometric results international",
+      "total": 66313475.85
+    }
+  ]
+}

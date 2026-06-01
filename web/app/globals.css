@@ -23,6 +23,15 @@ body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
+/* Editorial typography for the long-form story (NYT-style). */
+.story-display {
+  font-family: Georgia, "Times New Roman", "Iowan Old Style", serif;
+  letter-spacing: -0.01em;
+}
+.story-prose {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
 /* Shared form-control style used across filter bars and the SQL console. */
 .input {
   width: 100%;

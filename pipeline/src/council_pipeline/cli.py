@@ -108,6 +108,18 @@ def build(
     console.print(f"→ {paths.PUBLISHED_DIR}")
 
 
+@app.command("story-data")
+def story_data() -> None:
+    """Bake the JSON series for the scrollytelling essay into web/public/story/."""
+    from .story import write_story_data
+
+    data = write_story_data()
+    console.print(
+        f"[green]Wrote story data[/]: {len(data['category_totals'])} category rows, "
+        f"{data['meta']['classified_pct']}% classified → {paths.WEB_STORY_DIR}"
+    )
+
+
 @app.command("run-all")
 def run_all(
     source: str = typer.Option(None, help="Source id; default = all."),

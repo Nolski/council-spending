@@ -30,6 +30,9 @@ PUBLISHED_DIR = REPO_ROOT / "data"
 MANIFEST_FILE = PUBLISHED_DIR / "manifest.json"
 CANONICAL_DB = PUBLISHED_DIR / "council.duckdb"
 
+# Pre-baked JSON series for the scrollytelling essay (web/public/story/).
+WEB_STORY_DIR = REPO_ROOT / "web" / "public" / "story"
+
 
 def raw_dir(council: str, dataset: str) -> Path:
     return RAW_DIR / council / dataset
