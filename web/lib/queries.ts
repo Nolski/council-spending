@@ -149,6 +149,60 @@ export interface ContractRow {
   end_date: string;
 }
 
+// ---- Analysis (classified categories + concentration) ----
+
+const CATEGORY = () => parquet("summary/spend_by_category.parquet");
+
+export interface CategoryTotalRow {
+  council: string;
+  spend_category: string;
+  total: number;
+  txn_count: number;
+}
+
+export function categoryTotalsSql(council?: string): string {
+  const where = council ? `WHERE council = ${sqlLit(council)}` : "";
+  return `SELECT council, spend_category, sum(total) AS total, sum(txn_count) AS txn_count
+          FROM ${CATEGORY()} ${where}
+          GROUP BY council, spend_category
+          ORDER BY total DESC`;
+}
+
+export interface CategoryMonthRow {
+  council: string;
+  spend_category: string;
+  year_month: string;
+  total: number;
+}
+
+/** Monthly spend time-series for the given categories (optionally one council). */
+export function categoryTrendSql(categories: string[], council?: string): string {
+  const cats = categories.map(sqlLit).join(", ");
+  const conds = [`spend_category IN (${cats})`, "year_month IS NOT NULL"];
+  if (council) conds.push(`council = ${sqlLit(council)}`);
+  return `SELECT council, spend_category, year_month, sum(total) AS total
+          FROM ${CATEGORY()}
+          WHERE ${conds.join(" AND ")}
+          GROUP BY council, spend_category, year_month
+          ORDER BY year_month`;
+}
+
+export interface ConcentrationRow {
+  council: string;
+  year: number;
+  total: number;
+  top10: number;
+  n_suppliers: number;
+  top10_pct: number;
+}
+
+export function concentrationSql(): string {
+  return `SELECT council, year, total, top10, n_suppliers, top10_pct
+          FROM ${parquet("summary/contractor_concentration.parquet")}
+          WHERE year > 0
+          ORDER BY council, year`;
+}
+
 export function contractsSql(opts: { supplier?: string; limit?: number }): string {
   const conds = ["1=1"];
   if (opts.supplier)

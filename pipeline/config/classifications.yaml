@@ -1,0 +1,70 @@
+# Analytical categorisation of spending transactions, for the critical/re-budgeting
+# analysis. Rules are ORDERED — first match wins per transaction. A rule matches if
+# ANY pattern (case-insensitive regex) is found in ANY of its `fields`. `council`
+# optionally scopes a rule to one tier (devon=county, exeter=district, or both).
+#
+# These are deliberately editable: refine patterns and re-run `council build`. The
+# build logs the share of spend left "unclassified" so coverage stays honest — this
+# is a lens over the data, not a claim of completeness.
+#
+# Order matters: more specific / higher-signal categories first.
+rules:
+  # --- Housing & homelessness (Exeter / district) ---
+  - category: temporary_accommodation
+    council: exeter
+    fields: [supplier_name_norm, expense_type, expense_area, creditor_type]
+    patterns:
+      - "hotel"
+      - "travelodge|premier inn|holiday inn|guest house"
+      - "bed and breakfast|b and b|b&b"
+      - "spot purchase|nightly|temporary accom|emergency accom|homeless"
+      - "lettings|letting agen"
+
+  # --- Profit extraction / financialisation (both councils) ---
+  - category: agency_staff
+    fields: [supplier_name_norm, expense_type]
+    patterns:
+      - "agency|recruit|recruitment"
+      - "comensura|matrix scm|reed |hays |pertemps|adecco|randstad|hcl|driver hire"
+      - "locum|temp staff|temporary staff|agency staff"
+  - category: consultants
+    fields: [supplier_name_norm, expense_type]
+    patterns:
+      - "consult"
+      - "deloitte|pwc|pricewaterhouse|kpmg|ernst|\\bey \\b|\\bey$|grant thornton"
+      - "mott macdonald|pa consulting|\\barup\\b|atkins|\\bwsp\\b|jacobs|aecom"
+      - "capita|serco|interim manage"
+  - category: care_provider
+    council: devon
+    fields: [supplier_name_norm, expense_area, expense_type]
+    patterns:
+      - "care home|nursing home|residential care|care centre"
+      - "domiciliary|home care|homecare|supported living|extra care"
+      - "care ltd|care limited|care services|healthcare|\\bcare\\b"
+  - category: special_school_placement
+    council: devon
+    fields: [expense_type, expense_area, supplier_name_norm]
+    patterns:
+      - "independent special|special school|residential school"
+      - "out of county|out of authority|educational placement|independent placement"
+  - category: send_transport
+    council: devon
+    fields: [expense_type, expense_area, supplier_name_norm]
+    patterns:
+      - "home to school|school transport|send transport|home-to-school"
+      - "passenger transport|travel assist|\\btaxi\\b|private hire"
+  - category: waste
+    fields: [supplier_name_norm, expense_area, expense_type]
+    patterns:
+      - "\\bsuez\\b|veolia|biffa|viridor|\\benva\\b"
+      - "waste|recycl|refuse|landfill"
+  - category: highways_construction
+    fields: [supplier_name_norm, expense_area, expense_type]
+    patterns:
+      - "skanska|\\bkier\\b|ringway|milestone infra|south west highways|m group"
+      - "tarmac|aggregate|\\bhighways\\b|carriageway|construction"
+  - category: it_systems
+    fields: [supplier_name_norm, expense_type]
+    patterns:
+      - "\\bibm\\b|microsoft|oracle|\\bsap\\b|civica|northgate|capita software"
+      - "software|licen[cs]e|\\bict\\b|\\bit services\\b"

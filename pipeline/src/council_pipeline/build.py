@@ -25,6 +25,7 @@ from . import paths
 from .config import SourceConfig, get_source, load_column_map, load_sources
 from .models import CONTRACT_FIELDS, GRANT_FIELDS, Council, Dataset
 from .normalize import dates, money, redaction
+from .normalize.classify import classify, coverage
 from .normalize.suppliers import SupplierResolver, normalize_name
 from .parsers.header_map import resolve_headers
 
@@ -165,6 +166,41 @@ def _write_summaries(df: pl.DataFrame, suppliers: list[dict]) -> None:
 
     pl.DataFrame(suppliers).write_parquet(s / "dim_suppliers.parquet")
 
+    # Analytical category spend over time (drives the Analysis dashboard views).
+    by_category = (
+        spend.with_columns(pl.col("payment_date").dt.strftime("%Y-%m").alias("year_month"))
+        .group_by(["council", "spend_category", "year_month"])
+        .agg(pl.col("amount").sum().alias("total"), pl.len().alias("txn_count"))
+        .sort(["council", "spend_category", "year_month"])
+    )
+    by_category.write_parquet(s / "spend_by_category.parquet")
+
+    # Contractor concentration per council-year: top-10 suppliers' share of spend
+    # (a financialisation / market-concentration signal).
+    sup_year = (
+        spend.with_columns(pl.col("payment_date").dt.year().alias("year"))
+        .filter(pl.col("year").is_not_null() & pl.col("supplier_id_canonical").is_not_null())
+        .group_by(["council", "year", "supplier_id_canonical"])
+        .agg(pl.col("amount").sum().alias("supplier_total"))
+        .with_columns(
+            pl.col("supplier_total")
+            .rank("ordinal", descending=True)
+            .over(["council", "year"])
+            .alias("rank")
+        )
+    )
+    concentration = (
+        sup_year.group_by(["council", "year"])
+        .agg(
+            pl.col("supplier_total").sum().alias("total"),
+            pl.col("supplier_total").filter(pl.col("rank") <= 10).sum().alias("top10"),
+            pl.col("supplier_id_canonical").n_unique().alias("n_suppliers"),
+        )
+        .with_columns((pl.col("top10") / pl.col("total") * 100).alias("top10_pct"))
+        .sort(["council", "year"])
+    )
+    concentration.write_parquet(s / "contractor_concentration.parquet")
+
 
 def _write_duckdb(df: pl.DataFrame) -> None:
     if paths.CANONICAL_DB.exists():
@@ -209,6 +245,8 @@ def _write_manifest(df: pl.DataFrame, partitions: list[dict]) -> dict:
             "summary/spend_by_supplier.parquet",
             "summary/spend_by_department.parquet",
             "summary/dim_suppliers.parquet",
+            "summary/spend_by_category.parquet",
+            "summary/contractor_concentration.parquet",
         ],
     }
     paths.MANIFEST_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -244,6 +282,9 @@ def build_spending(source_ids: list[str] | None = None) -> dict:
 
     df = pl.concat(frames, how="vertical")
     df, suppliers = _assign_suppliers(df)
+    df = classify(df)
+    cov = coverage(df)
+    log.info("classification coverage", rows_pct=cov["rows_pct"], amount_pct=cov["amount_pct"])
 
     paths.ensure_dirs()
     partitions = _write_partitioned(df)

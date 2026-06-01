@@ -25,6 +25,26 @@ export function Card({
   );
 }
 
+/** Narrative + "re-budgeting question" box pairing prose with a chart. */
+export function Callout({
+  children,
+  question,
+}: {
+  children: ReactNode;
+  question?: string;
+}) {
+  return (
+    <div className="rounded-lg border-l-4 border-blue-500 bg-blue-50/60 p-4 text-sm leading-relaxed dark:bg-blue-950/30">
+      <div className="text-neutral-700 dark:text-neutral-200">{children}</div>
+      {question && (
+        <p className="mt-2 font-medium text-blue-800 dark:text-blue-300">
+          Re-budgeting question: {question}
+        </p>
+      )}
+    </div>
+  );
+}
+
 export function Stat({ label, value }: { label: string; value: ReactNode }) {
   return (
     <Card>
