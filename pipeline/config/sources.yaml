@@ -1,0 +1,29 @@
+# Source registry. Each entry describes one published dataset and how to fetch +
+# parse it. Add new sources here; the registry wires them to fetchers/parsers.
+
+sources:
+  devon_spending:
+    council: devon
+    dataset: spending
+    fetcher: github_listing
+    parser: tabular
+    column_map: devon_spending
+    threshold_floor: 500
+    licence: OGL
+    # Devon publishes monthly CSVs in a GitHub repo with stable raw URLs.
+    repo: Devon-County-Council/spending
+    branch: master
+    file_glob: "DCCSpendingOver500_*.csv"
+
+  exeter_spending:
+    council: exeter
+    dataset: spending
+    fetcher: exeter_scrape
+    parser: tabular
+    column_map: exeter_spending
+    threshold_floor: 250
+    licence: OGL
+    # Exeter hides files behind hashed /media/<hash>/ links; we scrape the page.
+    page_url: "https://exeter.gov.uk/council-and-democracy/council-information/council-data/council-spending/"
+    link_pattern: "spend"          # substring filter for candidate download links
+    file_extensions: [".csv", ".xlsx"]

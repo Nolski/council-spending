@@ -1,0 +1,62 @@
+# Maps Devon spending CSV headers (which drift across years) to canonical spend
+# fields. Each canonical field lists known header variants; matching is done on a
+# normalized form (lowercased, punctuation/whitespace stripped) plus fuzzy backup.
+# Unmapped headers fail loudly so a new era is added here explicitly rather than
+# silently dropped — but their values are still preserved in the `raw` column.
+fields:
+  transaction_id:
+    - Transaction number
+    - Transaction Number
+    - Trans no
+    - Transaction No
+  invoice_number:
+    - Invoice Number
+    - Invoice No
+    - Invoice ref
+  body_name:
+    - Name of Body
+    - Body Name
+    - BodyName
+  payment_date:
+    - Date
+    - Payment Date
+    - Transaction Date
+  amount:
+    - Amount
+    - Net Amount
+    - Total
+  supplier_name_raw:
+    - Supplier name
+    - Supplier Name
+    - Beneficiary
+    - Payee
+  supplier_ref_source:
+    - Supplier ID
+    - Supplier Id
+    - SupplierID
+  vat_reg_no:
+    - VAT reg no
+    - VAT Reg No
+    - VAT Registration Number
+  expense_area:
+    - Expense area
+    - Expense Area
+    - Service Area
+    - Directorate
+  expense_type:
+    - Expense type
+    - Expense Type
+  expense_code:
+    - Expense code
+    - Expense Code
+  cost_centre:
+    - Costcuk
+    - Cost Centre
+    - Cost Center
+  creditor_type:
+    - Creditor type
+    - Creditor Type
+# Headers we expect but deliberately ignore (present in some eras, no canonical
+# home). Listing them here keeps "unmapped header" errors meaningful.
+ignore:
+  - Body

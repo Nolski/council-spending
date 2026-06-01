@@ -1,0 +1,132 @@
+{
+  "generated_at": "2026-06-01T15:59:08.190465+00:00",
+  "datasets": {
+    "spending": {
+      "partitioning": [
+        "council",
+        "year"
+      ],
+      "path": "spending/council=<council>/year=<year>/part.parquet",
+      "total_rows": 1529542,
+      "by_council": [
+        {
+          "council": "devon",
+          "rows": 1529542,
+          "total_spend": 9654201067.223198,
+          "date_min": "2011-01-04",
+          "date_max": "2026-03-31"
+        }
+      ],
+      "partitions": [
+        {
+          "council": "devon",
+          "year": 0,
+          "path": "spending/council=devon/year=0/part.parquet",
+          "rows": 18500
+        },
+        {
+          "council": "devon",
+          "year": 2011,
+          "path": "spending/council=devon/year=2011/part.parquet",
+          "rows": 79091
+        },
+        {
+          "council": "devon",
+          "year": 2012,
+          "path": "spending/council=devon/year=2012/part.parquet",
+          "rows": 71444
+        },
+        {
+          "council": "devon",
+          "year": 2013,
+          "path": "spending/council=devon/year=2013/part.parquet",
+          "rows": 89419
+        },
+        {
+          "council": "devon",
+          "year": 2014,
+          "path": "spending/council=devon/year=2014/part.parquet",
+          "rows": 92812
+        },
+        {
+          "council": "devon",
+          "year": 2015,
+          "path": "spending/council=devon/year=2015/part.parquet",
+          "rows": 97320
+        },
+        {
+          "council": "devon",
+          "year": 2016,
+          "path": "spending/council=devon/year=2016/part.parquet",
+          "rows": 100015
+        },
+        {
+          "council": "devon",
+          "year": 2017,
+          "path": "spending/council=devon/year=2017/part.parquet",
+          "rows": 94128
+        },
+        {
+          "council": "devon",
+          "year": 2018,
+          "path": "spending/council=devon/year=2018/part.parquet",
+          "rows": 92947
+        },
+        {
+          "council": "devon",
+          "year": 2019,
+          "path": "spending/council=devon/year=2019/part.parquet",
+          "rows": 96986
+        },
+        {
+          "council": "devon",
+          "year": 2020,
+          "path": "spending/council=devon/year=2020/part.parquet",
+          "rows": 110040
+        },
+        {
+          "council": "devon",
+          "year": 2021,
+          "path": "spending/council=devon/year=2021/part.parquet",
+          "rows": 122830
+        },
+        {
+          "council": "devon",
+          "year": 2022,
+          "path": "spending/council=devon/year=2022/part.parquet",
+          "rows": 129851
+        },
+        {
+          "council": "devon",
+          "year": 2023,
+          "path": "spending/council=devon/year=2023/part.parquet",
+          "rows": 133264
+        },
+        {
+          "council": "devon",
+          "year": 2024,
+          "path": "spending/council=devon/year=2024/part.parquet",
+          "rows": 137838
+        },
+        {
+          "council": "devon",
+          "year": 2025,
+          "path": "spending/council=devon/year=2025/part.parquet",
+          "rows": 54325
+        },
+        {
+          "council": "devon",
+          "year": 2026,
+          "path": "spending/council=devon/year=2026/part.parquet",
+          "rows": 8732
+        }
+      ]
+    }
+  },
+  "summaries": [
+    "summary/spend_by_month.parquet",
+    "summary/spend_by_supplier.parquet",
+    "summary/spend_by_department.parquet",
+    "summary/dim_suppliers.parquet"
+  ]
+}

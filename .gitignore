@@ -1,0 +1,46 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Node / web
+node_modules/
+web/.next/
+web/out/
+.turbo/
+
+# Pipeline data lake (regenerated; potentially large)
+pipeline/data/raw/
+pipeline/data/staging/
+pipeline/data/canonical/
+
+# Published dashboard data (Parquet) — large; produced by the pipeline.
+# Tracked via git-lfs or release artifacts instead of plain git. See README.
+data/spending/
+data/contracts/
+data/grants/
+data/salaries/
+data/summary/
+# Keep data/manifest.json under version control as the data contract.
+!data/manifest.json
+
+# Web copy/symlink of data
+web/public/data
+
+# Env / misc
+.env*
+!.env.example
+.DS_Store
+
+# Playwright MCP artifacts
+web/.playwright-mcp/
+*.png
+.playwright-mcp/
+
+# Generated DuckDB database (regenerable from Parquet)
+data/council.duckdb
