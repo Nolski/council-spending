@@ -19,17 +19,11 @@ pipeline/data/raw/
 pipeline/data/staging/
 pipeline/data/canonical/
 
-# Published dashboard data (Parquet) — large; produced by the pipeline.
-# Tracked via git-lfs or release artifacts instead of plain git. See README.
-data/spending/
-data/contracts/
-data/grants/
-data/salaries/
-data/summary/
-# Keep data/manifest.json under version control as the data contract.
-!data/manifest.json
+# Published dashboard data (Parquet) IS committed so the GitHub Pages site is
+# self-contained (it's open data, reproducible via the pipeline). The large DuckDB
+# file and the raw/staging lake stay out (see below).
 
-# Web copy/symlink of data
+# Web copy/symlink of data (the CI workflow copies data/ into here; local uses a symlink)
 web/public/data
 
 # Env / misc

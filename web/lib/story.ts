@@ -1,5 +1,7 @@
 "use client";
 
+import { BASE_PATH } from "./basepath";
+
 // Loaders + types for the pre-baked scrollytelling data (web/public/story/).
 
 export interface FromData {
@@ -29,7 +31,7 @@ export type Curated = Record<string, any>;
 
 function base(): string {
   const origin = typeof window !== "undefined" ? window.location.origin : "";
-  return `${origin}/story`;
+  return `${origin}${BASE_PATH}/story`;
 }
 
 let cache: Promise<{ data: FromData; curated: Curated }> | null = null;

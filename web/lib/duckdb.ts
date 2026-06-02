@@ -10,6 +10,7 @@
 
 import * as duckdb from "@duckdb/duckdb-wasm";
 import type { AsyncDuckDB, AsyncDuckDBConnection } from "@duckdb/duckdb-wasm";
+import { BASE_PATH } from "./basepath";
 
 let dbPromise: Promise<AsyncDuckDB> | null = null;
 let conn: AsyncDuckDBConnection | null = null;
@@ -42,7 +43,7 @@ async function getConn(): Promise<AsyncDuckDBConnection> {
 /** Absolute URL to a published data file (Parquet lives under /data). */
 export function dataUrl(relPath: string): string {
   const base = typeof window !== "undefined" ? window.location.origin : "";
-  return `${base}/data/${relPath}`;
+  return `${base}${BASE_PATH}/data/${relPath}`;
 }
 
 /** `read_parquet('<url>')` helper for use inside SQL. */

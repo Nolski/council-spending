@@ -6,6 +6,7 @@ import { useQuery } from "@/lib/useQuery";
 import { query } from "@/lib/duckdb";
 import { categoryTotalsSql, type CategoryTotalRow } from "@/lib/queries";
 import { categoryLabel } from "@/lib/charts";
+import { asset } from "@/lib/basepath";
 import { gbp, num, councilLabel } from "@/lib/format";
 
 const VIEWS = [
@@ -53,7 +54,7 @@ export default function AnalysisPage() {
         </p>
         <p className="mt-2 text-sm">
           <a
-            href="/research/council-finance-critique.md"
+            href={asset("/research/council-finance-critique.md")}
             className="text-blue-600 hover:underline dark:text-blue-400"
           >
             → Read the full research report

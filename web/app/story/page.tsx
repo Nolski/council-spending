@@ -9,6 +9,7 @@ import { RebudgetCalculator } from "@/components/story/RebudgetCalculator";
 import { useQuery } from "@/lib/useQuery";
 import { loadStory, categoryTotal, type FromData } from "@/lib/story";
 import { gbp, gbpCompact, councilLabel } from "@/lib/format";
+import { asset } from "@/lib/basepath";
 import { categoryLabel } from "@/lib/charts";
 
 export default function StoryPage() {
@@ -232,19 +233,19 @@ export default function StoryPage() {
             </p>
             <p>
               Full sourcing:{" "}
-              <a className="text-blue-600 hover:underline dark:text-blue-400" href="/research/council-finance-critique.md">
+              <a className="text-blue-600 hover:underline dark:text-blue-400" href={asset("/research/council-finance-critique.md")}>
                 the research report
               </a>{" "}
               and{" "}
-              <a className="text-blue-600 hover:underline dark:text-blue-400" href="/research/revenue-levers.md">
+              <a className="text-blue-600 hover:underline dark:text-blue-400" href={asset("/research/revenue-levers.md")}>
                 the revenue-levers dossier
               </a>{" "}
               and the{" "}
-              <a className="text-blue-600 hover:underline dark:text-blue-400" href="/research/redirect-scenarios.md">
+              <a className="text-blue-600 hover:underline dark:text-blue-400" href={asset("/research/redirect-scenarios.md")}>
                 redirect-model benchmarks
               </a>
               . Explore the underlying numbers in the{" "}
-              <a className="text-blue-600 hover:underline dark:text-blue-400" href="/analysis">
+              <a className="text-blue-600 hover:underline dark:text-blue-400" href={asset("/analysis")}>
                 analysis dashboard
               </a>
               .
