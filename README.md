@@ -4,6 +4,8 @@ Data-ingestion pipelines and an interactive dashboard for analyzing **Exeter Cit
 Council** and **Devon County Council** spending — built to support evidence-based
 policy proposals.
 
+**Live site:** https://nolski.github.io/council-spending/ — interactive dashboard + the "No one is coming" data essay.
+
 ## What this is
 
 A monorepo with two decoupled halves joined by a **Parquet data contract**:
