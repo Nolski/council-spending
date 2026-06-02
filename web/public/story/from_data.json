@@ -1120,5 +1120,424 @@
       "supplier_name_norm": "geometric results international",
       "total": 66313475.85
     }
+  ],
+  "run_rate_year": 2025,
+  "savings_runrate": [
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "annual": 10531363.66
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "annual": 9029802.510000004
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "annual": 6871926.630000002
+    },
+    {
+      "council": "exeter",
+      "spend_category": "agency_staff",
+      "annual": 3058699.69
+    },
+    {
+      "council": "exeter",
+      "spend_category": "consultants",
+      "annual": 1785448.04
+    },
+    {
+      "council": "exeter",
+      "spend_category": "it_systems",
+      "annual": 530451.35
+    }
+  ],
+  "candidate_suppliers": [
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "supplier": "GEOMETRIC RESULTS INTERNATIONAL",
+      "total": 66313475.849999994,
+      "annual": 0.0,
+      "txns": 1621
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "supplier": "AGENCY ASSISTANCE",
+      "total": 37310443.54999999,
+      "annual": 1632503.3599999996,
+      "txns": 10557
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "supplier": "COMENSURA LTD",
+      "total": 31168573.089999996,
+      "annual": 4307320.869999999,
+      "txns": 156
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "supplier": "S C C",
+      "total": 12708885.510000002,
+      "annual": 2951076.7900000005,
+      "txns": 275
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "supplier": "SANCTUARY PERSONNEL LTD",
+      "total": 8254457.0,
+      "annual": 0.0,
+      "txns": 854
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "supplier": "MAGNIT GLOBAL GRI LIMITED",
+      "total": 8247609.400000002,
+      "annual": 0.0,
+      "txns": 118
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "supplier": "SOFTWARE BOX LTD",
+      "total": 7944799.680000001,
+      "annual": 0.0,
+      "txns": 349
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "supplier": "CAPITA BUSINESS SERVICES LTD",
+      "total": 7675242.93,
+      "annual": 226737.2,
+      "txns": 674
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "supplier": "SOFTWARE AG (UK) LTD",
+      "total": 6061025.46,
+      "annual": 623432.19,
+      "txns": 88
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "supplier": "PROSPERO RECRUITMENT LTD",
+      "total": 5921773.059999998,
+      "annual": 478852.2900000001,
+      "txns": 3232
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "supplier": "SOUTH WEST GRID FOR LEARNING",
+      "total": 5759823.91,
+      "annual": 0.0,
+      "txns": 2221
+    },
+    {
+      "council": "exeter",
+      "spend_category": "agency_staff",
+      "supplier": "Comensura",
+      "total": 5211962.4399999995,
+      "annual": 2480867.4699999997,
+      "txns": 2236
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "supplier": "BOXXE LIMITED",
+      "total": 4851487.96,
+      "annual": 2051.1899999999996,
+      "txns": 123
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "supplier": "IPEOPLE SERVICES LIMITED",
+      "total": 4569611.310000002,
+      "annual": 0.0,
+      "txns": 1688
+    },
+    {
+      "council": "devon",
+      "spend_category": "agency_staff",
+      "supplier": "EDUCATED RECRUITMENT LIMITED",
+      "total": 3378568.9899999998,
+      "annual": 90978.0,
+      "txns": 2656
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "supplier": "OUTSYSTEMS LIMITED",
+      "total": 2807299.73,
+      "annual": 21870.16,
+      "txns": 19
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "supplier": "KIER CONSTRUCTION PBA",
+      "total": 2539509.5900000003,
+      "annual": 0.0,
+      "txns": 5
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "supplier": "SOFTCAT LIMITED",
+      "total": 2468548.53,
+      "annual": 285867.35000000003,
+      "txns": 96
+    },
+    {
+      "council": "devon",
+      "spend_category": "it_systems",
+      "supplier": "ORACLE",
+      "total": 2406733.6,
+      "annual": 40521.12,
+      "txns": 94
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "supplier": "VENTRUS MULTI ACADEMY TRUST",
+      "total": 2219192.5,
+      "annual": 71070.38,
+      "txns": 67
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "supplier": "STAGECOACH DEVON LTD",
+      "total": 1830751.7,
+      "annual": 0.0,
+      "txns": 1
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "supplier": "EXMOUTH COMMUNITY COLL(ACADEMY)",
+      "total": 1799796.0200000003,
+      "annual": 0.0,
+      "txns": 25
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "supplier": "SERCO LTD",
+      "total": 1796989.1800000002,
+      "annual": 967.0000000000001,
+      "txns": 100
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "supplier": "TED WRAGG MULTI ACADEMY TRUST",
+      "total": 1658263.0699999998,
+      "annual": 0.0,
+      "txns": 47
+    },
+    {
+      "council": "exeter",
+      "spend_category": "agency_staff",
+      "supplier": "The Oyster Partnership Ltd",
+      "total": 1605845.2899999993,
+      "annual": 199779.0,
+      "txns": 1208
+    },
+    {
+      "council": "devon",
+      "spend_category": "consultants",
+      "supplier": "MILESTONE INFRASTRUCTURE LTD",
+      "total": 1605636.23,
+      "annual": 276846.54,
+      "txns": 43
+    },
+    {
+      "council": "exeter",
+      "spend_category": "it_systems",
+      "supplier": "Debit Finance Collections Plc",
+      "total": 666560.16,
+      "annual": 181702.05,
+      "txns": 162
+    },
+    {
+      "council": "exeter",
+      "spend_category": "agency_staff",
+      "supplier": "Morgan Hunt Uk Ltd",
+      "total": 646935.3000000004,
+      "annual": 109340.18000000004,
+      "txns": 656
+    },
+    {
+      "council": "exeter",
+      "spend_category": "agency_staff",
+      "supplier": "Recruitment Solutions (Sw) Ltd",
+      "total": 612515.6900000003,
+      "annual": 0.0,
+      "txns": 511
+    },
+    {
+      "council": "exeter",
+      "spend_category": "agency_staff",
+      "supplier": "James Andrews Recruitment Solutions Ltd",
+      "total": 525759.98,
+      "annual": 0.0,
+      "txns": 880
+    },
+    {
+      "council": "exeter",
+      "spend_category": "agency_staff",
+      "supplier": "Hays Accountancy Personnel",
+      "total": 506552.7799999999,
+      "annual": 101028.47999999998,
+      "txns": 448
+    },
+    {
+      "council": "exeter",
+      "spend_category": "consultants",
+      "supplier": "Cenergist Ltd",
+      "total": 494539.93000000005,
+      "annual": 0.0,
+      "txns": 10
+    },
+    {
+      "council": "exeter",
+      "spend_category": "consultants",
+      "supplier": "G & L Consultancy Ltd",
+      "total": 397841.47,
+      "annual": 221346.47,
+      "txns": 168
+    },
+    {
+      "council": "exeter",
+      "spend_category": "agency_staff",
+      "supplier": "The Best Connection Group Ltd",
+      "total": 359623.30000000005,
+      "annual": 0.0,
+      "txns": 429
+    },
+    {
+      "council": "exeter",
+      "spend_category": "agency_staff",
+      "supplier": "Concept Staffing Ltd",
+      "total": 307200.9800000001,
+      "annual": 0.0,
+      "txns": 314
+    },
+    {
+      "council": "exeter",
+      "spend_category": "consultants",
+      "supplier": "Emerald Green Power Ltd",
+      "total": 235912.94,
+      "annual": 59801.0,
+      "txns": 5
+    },
+    {
+      "council": "exeter",
+      "spend_category": "consultants",
+      "supplier": "Redquadrant Ltd",
+      "total": 230313.0,
+      "annual": 187232.0,
+      "txns": 11
+    },
+    {
+      "council": "exeter",
+      "spend_category": "consultants",
+      "supplier": "Ahr Architects Ltd",
+      "total": 219300.0,
+      "annual": 0.0,
+      "txns": 6
+    },
+    {
+      "council": "exeter",
+      "spend_category": "consultants",
+      "supplier": "Jones Lang Lasalle Ltd",
+      "total": 216526.0,
+      "annual": 4250.0,
+      "txns": 9
+    },
+    {
+      "council": "exeter",
+      "spend_category": "consultants",
+      "supplier": "Scheidt & Bachmann (Uk) Ltd",
+      "total": 207261.0,
+      "annual": 207261.0,
+      "txns": 2
+    },
+    {
+      "council": "exeter",
+      "spend_category": "consultants",
+      "supplier": "Wring Group Ltd",
+      "total": 204218.56999999998,
+      "annual": 0.0,
+      "txns": 4
+    },
+    {
+      "council": "exeter",
+      "spend_category": "it_systems",
+      "supplier": "Advanced Business Solutions",
+      "total": 186034.85,
+      "annual": 0.0,
+      "txns": 9
+    },
+    {
+      "council": "exeter",
+      "spend_category": "it_systems",
+      "supplier": "Ppl Prs Ltd",
+      "total": 152370.44,
+      "annual": 59677.59,
+      "txns": 18
+    },
+    {
+      "council": "exeter",
+      "spend_category": "it_systems",
+      "supplier": "Skyguard Ltd",
+      "total": 117713.95999999999,
+      "annual": 42342.96,
+      "txns": 41
+    },
+    {
+      "council": "exeter",
+      "spend_category": "it_systems",
+      "supplier": "Pce Technology Ltd",
+      "total": 101913.82,
+      "annual": 99571.07,
+      "txns": 5
+    },
+    {
+      "council": "exeter",
+      "spend_category": "it_systems",
+      "supplier": "Open Text Uk Ltd",
+      "total": 60419.39,
+      "annual": 0.0,
+      "txns": 2
+    },
+    {
+      "council": "exeter",
+      "spend_category": "it_systems",
+      "supplier": "Panacea Software Ltd",
+      "total": 59629.0,
+      "annual": 7720.0,
+      "txns": 6
+    },
+    {
+      "council": "exeter",
+      "spend_category": "it_systems",
+      "supplier": "Fitronics Ltd (T/A Cap2)",
+      "total": 43379.740000000005,
+      "annual": 3972.06,
+      "txns": 6
+    }
   ]
 }

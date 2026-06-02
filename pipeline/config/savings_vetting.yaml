@@ -1,0 +1,65 @@
+# Vetting for the "candidate savings" analysis. Within the cuttable categories
+# (consultants, agency_staff, it_systems), not everything is genuinely discretionary
+# spend a council could trim. This list EXCLUDES the false positives so the named
+# savings candidates are defensible. Matching is case-insensitive substring against the
+# supplier's raw name (Devon truncates names, so patterns are kept short).
+#
+# Everything in a cuttable category that is NOT excluded (and not a redacted payee) is
+# treated as DISCRETIONARY and counted in the savings run-rate.
+
+exclude:
+  # Capital-project engineering & design — infrastructure delivery, not management
+  # consultancy; cutting it would stop building things, not save waste.
+  - wsp
+  - jacobs
+  - aecom
+  - arup
+  - atkins
+  - faithful & gould
+  - mott macdonald
+  - ramboll
+  - stantec
+  - mouchel
+
+  # Care / placements misclassified as "agency staff" (statutory care, not temp labour).
+  - fostering
+  - dom care
+  - domiciliary
+  - care agency
+  - childrens home
+  - residential care
+
+  # Other public bodies / inter-authority / statutory transfers (not a private contractor).
+  - county coun
+  - district coun
+  - city coun
+  - borough coun
+  - parish coun
+  - department for
+  - environment agency
+  - network rail
+  - diocesan
+  - " nhs"
+  - police
+  - fire authority
+  - fire and rescue
+  - hmrc
+  - homes england
+  - highways england
+  - national highways
+
+  # External audit — a statutory requirement, not discretionary advice.
+  - grant thornton
+  - mazars
+
+  # Intra-group / shared public services (already in-house / public).
+  - strata service
+  - exeter city living
+  - devon norse
+
+# Large outsourced SERVICE contracts: genuinely discretionary in the long run (insourcing
+# candidates) but not a quick annual saving — reported separately, excluded from the
+# headline run-rate so the "homes this year" math stays honest.
+committed_contracts:
+  - mears
+  - bloom procurement

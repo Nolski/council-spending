@@ -33,6 +33,16 @@
   "cmi": { "value": "~£6.4m", "label": "raised directly from residents via local climate bonds across 8 councils since 2020 — cheaper than PWLB, but modest", "kind": "verified", "source": "Zero Carbon Accelerator", "url": "https://zerocarbonaccelerator.london/green-funding-and-finance/community-municipal-investment-cmi-local-climate-bonds-lcbs/" },
   "land_value": { "value": "~75%", "label": "of land-value uplift on new development goes uncaptured; >£8bn in developer contributions sits unspent", "kind": "verified", "source": "HCLG Committee, Land Value Capture", "url": "https://publications.parliament.uk/pa/cm201719/cmselect/cmcomloc/766/76606.htm" },
   "cautionary": { "value": "£1.2bn / £1.5bn", "label": "debt at Woking and losses at Thurrock from speculative commercial bets — why borrowing to buy assets 'primarily for yield' was banned in 2020. Productive assets yes; financial speculation no.", "kind": "verified", "source": "Public Finance; Arlingclose", "url": "https://www.publicfinance.co.uk/news/2023/06/woking-issues-section-114-notice" },
+  "redirect_assumptions": {
+    "run_rate_year": 2025,
+    "cost_per_home": { "value": 250000, "min": 200000, "max": 420000, "source": "Housing Forum 2024 (new build, ex-land); Exeter's Passivhaus homes ~£393k each" },
+    "net_rent_per_home": { "value": 5000, "source": "Regulator of Social Housing LARP 2024 (~£99.75/week)" },
+    "ta_avoided_per_home": { "value": 21700, "source": "Shelter/MHCLG 2024/25 (£2.84bn ÷ 130,890 households)" },
+    "avg_permanent_post": { "value": 50000, "source": "loaded permanent post; agency staff cost ~+53% more (DfE 2020)" },
+    "agency_premium_pct": { "value": 53, "source": "DfE 2020, children's social workers" },
+    "default_cuts": { "consultants": 0.4, "agency_staff": 0.3, "it_systems": 0.15 },
+    "note": "Illustrative. The HRA is ring-fenced from the General Fund (gov.uk), so savings fund homes indirectly — freeing capacity to lend/grant the HRA — not by direct transfer."
+  },
   "rent_vs_build": {
     "kind": "illustrative",
     "source": "Illustrative scenario — not a forecast; shows the structural logic of asset vs. liability",

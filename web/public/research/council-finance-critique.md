@@ -254,6 +254,37 @@ national reform**.
 
 ---
 
+## 7. Specific savings and where they could go
+
+Generalities are easy to dismiss, so this section names line items and models the redirect.
+Full sourcing and the vetting method are in `redirect-scenarios.md`.
+
+**The cuttable pot (discretionary, vetted, 2025 run-rate).** After stripping out
+capital-project engineering, statutory care/fostering, external audit and inter-authority
+transfers (which are *not* waste), the genuinely discretionary annual spend is **~£26m/yr at
+Devon** (agency £10.5m, IT £9.0m, consultants £6.9m) and **~£5.4m/yr at Exeter** (agency
+£3.1m, consultants £1.8m, IT £0.5m). Named examples: **Comensura** (managed agency-staffing
+vendor, Devon £4.3m / Exeter £2.5m), **Capita Business Services**, **Sanctuary Personnel**,
+**Prospero** (Devon). [Our data — directional.]
+
+**Where it goes — per council (the two-tier reality).**
+- **Exeter (district) → council housing.** Trimming, say, 40% of consultants, 30% of agency
+  and 15% of IT frees ~£1.7m/yr. As an illustrative annual housing contribution at ~£250k a
+  home, that is on the order of **~7 homes a year**, ~£35k/yr of rent and ~£150k/yr of
+  temporary-accommodation cost avoided — modest but compounding, and real. **Caveat:** the
+  HRA is ring-fenced from the General Fund, so these savings fund homes *indirectly* (freeing
+  capacity to lend/grant the HRA), not by transfer; and Exeter's Passivhaus homes cost ~£393k
+  each, so the realistic figure sits at the lower end.
+- **Devon (county) → insourcing.** Devon can't build council housing. Its larger pot
+  realistically reinvests in **replacing agency staff with permanent posts** — agency social
+  workers cost ~53% more — stabilising care/SEND and cutting future agency reliance.
+
+The interactive **re-budget calculator** on the `/story` page lets you set your own cut
+percentages and cost-per-home and see the result. It is an illustrative scenario tool, not a
+budget proposal.
+
+---
+
 ## Limitations
 
 - **Our figures are directional.** They derive from published transparency data

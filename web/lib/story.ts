@@ -12,6 +12,16 @@ export interface FromData {
   category_annual: { council: string; spend_category: string; year: string; total: number }[];
   concentration: { council: string; year: number; top10_pct: number; n_suppliers: number; total: number }[];
   top_suppliers: { council: string; supplier_name_norm: string; total: number }[];
+  run_rate_year: number;
+  savings_runrate: { council: string; spend_category: string; annual: number }[];
+  candidate_suppliers: {
+    council: string;
+    spend_category: string;
+    supplier: string;
+    total: number;
+    annual: number;
+    txns: number;
+  }[];
 }
 
 // Curated entries are intentionally loosely typed (mixed shapes); access by key.

@@ -5,9 +5,10 @@ import { Beat, Para, BeatHead } from "@/components/story/Beat";
 import { BigStat, SourceTag } from "@/components/story/BigStat";
 import { AnnotatedChart } from "@/components/story/AnnotatedChart";
 import { PullQuote } from "@/components/story/PullQuote";
+import { RebudgetCalculator } from "@/components/story/RebudgetCalculator";
 import { useQuery } from "@/lib/useQuery";
 import { loadStory, categoryTotal, type FromData } from "@/lib/story";
-import { gbpCompact, councilLabel } from "@/lib/format";
+import { gbp, gbpCompact, councilLabel } from "@/lib/format";
 import { categoryLabel } from "@/lib/charts";
 
 export default function StoryPage() {
@@ -176,6 +177,31 @@ export default function StoryPage() {
           </Beat>
           <BigStat value={c.cautionary.value} label={c.cautionary.label} kind="verified" source={c.cautionary.source} />
 
+          {/* 5b — The specifics: named candidates + calculator */}
+          <Beat>
+            <BeatHead kicker="The specifics">Where to cut, by name</BeatHead>
+            <Para>
+              Generalities are easy to wave away, so here are the actual line items. These are
+              the largest <em>discretionary</em> payments in the councils&apos; own data —
+              after stripping out capital-project engineering, statutory care, audit and
+              inter-authority transfers, which aren&apos;t waste. What remains — agency
+              staffing, management consultancy and software contracts — is where money could be
+              recovered.
+            </Para>
+            <NamedCandidates d={d} />
+          </Beat>
+          <Beat className="max-w-3xl">
+            <Para>
+              So what does that buy? Trim these lines and the savings have somewhere to go —
+              but <em>where</em> depends on which council. Exeter (the district) can put it into
+              council housing; Devon (the county) into insourcing the care and SEND staff it
+              currently rents at a premium.
+            </Para>
+          </Beat>
+          {c.redirect_assumptions && (
+            <RebudgetCalculator data={d} a={{ ...c.redirect_assumptions, run_rate_year: d.run_rate_year }} />
+          )}
+
           {/* 6 — What each council can do */}
           <Beat>
             <BeatHead kicker="The ask">What Devon and Exeter can actually do</BeatHead>
@@ -212,6 +238,10 @@ export default function StoryPage() {
               and{" "}
               <a className="text-blue-600 hover:underline dark:text-blue-400" href="/research/revenue-levers.md">
                 the revenue-levers dossier
+              </a>{" "}
+              and the{" "}
+              <a className="text-blue-600 hover:underline dark:text-blue-400" href="/research/redirect-scenarios.md">
+                redirect-model benchmarks
               </a>
               . Explore the underlying numbers in the{" "}
               <a className="text-blue-600 hover:underline dark:text-blue-400" href="/analysis">
@@ -223,6 +253,44 @@ export default function StoryPage() {
         </>
       )}
     </article>
+  );
+}
+
+function NamedCandidates({ d }: { d: FromData }) {
+  // Show the discretionary suppliers with material spend in the latest full year,
+  // sorted by that annual figure (i.e. what's actually cuttable now).
+  const rows = [...d.candidate_suppliers]
+    .filter((s) => s.annual > 100000)
+    .sort((a, b) => b.annual - a.annual)
+    .slice(0, 12);
+  return (
+    <div className="mt-5 overflow-x-auto rounded-lg border border-neutral-200 dark:border-neutral-800">
+      <table className="w-full text-sm">
+        <thead className="bg-neutral-50 text-left text-neutral-500 dark:bg-neutral-900">
+          <tr>
+            <th className="px-3 py-2 font-medium">Supplier</th>
+            <th className="px-3 py-2 font-medium">Council</th>
+            <th className="px-3 py-2 font-medium">Category</th>
+            <th className="px-3 py-2 text-right font-medium">{d.run_rate_year} spend</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((s, i) => (
+            <tr key={i} className="border-t border-neutral-100 dark:border-neutral-800/60">
+              <td className="px-3 py-2 capitalize">{s.supplier.toLowerCase()}</td>
+              <td className="px-3 py-2">{councilLabel(s.council)}</td>
+              <td className="px-3 py-2">{categoryLabel(s.spend_category)}</td>
+              <td className="px-3 py-2 text-right tabular-nums">{gbp(s.annual)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p className="px-3 py-2 text-xs text-neutral-400">
+        Discretionary spend only (capital engineering, care, audit and inter-authority
+        payments removed). Sole-trader payees are redacted at source. Our analysis of
+        published transparency data — directional.
+      </p>
+    </div>
   );
 }
 
