@@ -8,7 +8,7 @@ import { PullQuote } from "@/components/story/PullQuote";
 import { RebudgetCalculator } from "@/components/story/RebudgetCalculator";
 import { useQuery } from "@/lib/useQuery";
 import { loadStory, categoryTotal, type FromData } from "@/lib/story";
-import { gbp, gbpCompact, councilLabel } from "@/lib/format";
+import { gbp, councilLabel } from "@/lib/format";
 import { asset } from "@/lib/basepath";
 import { categoryLabel } from "@/lib/charts";
 
@@ -111,24 +111,59 @@ export default function StoryPage() {
             not spent on care, housing or children.
           </PullQuote>
 
-          {/* 4 — Refocus */}
+          {/* ===== PART TWO: THE PROPOSAL ===== */}
+
+          {/* 4 — What didn't work */}
           <Beat>
-            <BeatHead kicker="Refocus">Spend on what matters</BeatHead>
+            <BeatHead kicker="What didn&rsquo;t work">The expensive lessons</BeatHead>
             <Para>
-              The first move is defensive: stop the leak. Reducing reliance on agency staff
-              and consultants, scrutinising long contracts, and commissioning care for
-              stability rather than the lowest unit price all redirect money toward the
-              statutory demand that is driving the crisis — without a penny from Westminster.
+              Before prescribing anything, look at how other councils tried to dig out — and
+              bankrupted themselves doing it. The failures share a shape: <em>borrowed money
+              chasing a financial return</em>. When the bet went wrong, there was no asset left
+              to show for it, only debt.
             </Para>
           </Beat>
-
-          {/* 5 — Dig out */}
+          <BigStat value={c.cautionary.value} label={c.cautionary.label} kind="verified" source={c.cautionary.source} />
           <Beat>
-            <BeatHead kicker="Dig out">Real ways to raise revenue</BeatHead>
             <Para>
-              Cutting waste isn&apos;t enough on its own. The harder, more durable move is to
-              build assets and income the council actually owns. The biggest prize sits in
-              plain sight: homelessness.
+              The second failure mode is closer to home. Building homes to <em>sell</em> puts
+              the council on the wrong side of the property market: Exeter&apos;s own for-sale
+              development company was wound up after heavy losses and a handful of completions.
+            </Para>
+          </Beat>
+          <BigStat value={c.exeter_city_living.value} label={c.exeter_city_living.label} kind="verified" source={c.exeter_city_living.source} />
+          <Beat>
+            <Para>
+              The third is the slow leak we already saw: outsourcing core services and buying
+              into markets engineered to extract profit. Reselling energy was a clean disaster;
+              the care market quietly bleeds roughly a tenth of its income to profit, rent and
+              interest every year.
+            </Para>
+          </Beat>
+          <AnnotatedChart
+            title="Reselling energy lost millions; owning generation paid (£m)"
+            option={energyOption(c.energy_compare.items)}
+            caption="Council retail-energy ventures collapsed — the failures that frame what does work next."
+            kind="verified"
+            source={c.energy_compare.source}
+            height={300}
+          />
+          <BigStat value={c.care_leakage.value} label={c.care_leakage.label} kind="verified" source={c.care_leakage.source} />
+          <PullQuote cite="The pattern">
+            Leveraged speculation, building to sell, and outsourcing to extractive markets all
+            failed the same way: the council carried the risk and a private balance sheet kept
+            the reward.
+          </PullQuote>
+
+          {/* 5 — What works */}
+          <Beat>
+            <BeatHead kicker="What works">Assets that pay, not bets that bankrupt</BeatHead>
+            <Para>
+              The durable move is the mirror image: build or keep assets the council{" "}
+              <em>owns</em>, that throw off income or avoid a recurring cost. The biggest prize
+              sits in plain sight — homelessness. Every household in nightly temporary
+              accommodation is a permanent, unsubsidised drain; a council home for rent turns
+              that liability into a yielding asset.
             </Para>
           </Beat>
           <BigStat value={c.temp_accommodation.value} label={c.temp_accommodation.label} kind="verified" source={c.temp_accommodation.source} />
@@ -142,65 +177,95 @@ export default function StoryPage() {
           />
           <Beat>
             <Para>
-              But the vehicle matters. Exeter already learned this the hard way: its for-sale
-              development company was wound up after heavy losses and a handful of homes. The
-              lesson isn&apos;t &quot;don&apos;t build&quot; — it&apos;s build council homes to
-              <em> rent</em> (a yielding asset), not to <em>sell</em> (a market gamble).
+              The same logic runs through the rest. <strong>Owning</strong> solar generation
+              paid Warrington a dividend even as reselling energy bankrupted others.{" "}
+              <strong>Insourcing</strong> recaptures the contractor margin. And keeping money
+              circulating locally — the Preston model — quietly redirected tens of millions
+              into the local economy.
             </Para>
           </Beat>
-          <BigStat value={c.exeter_city_living.value} label={c.exeter_city_living.label} kind="verified" source={c.exeter_city_living.source} />
-          <Beat>
-            <Para>
-              Beyond housing, councils elsewhere are building income they own — but the line
-              between productive assets and speculation is unforgiving.
-            </Para>
-          </Beat>
-          <AnnotatedChart
-            title="Owning generation can pay; reselling energy did not (£m)"
-            option={energyOption(c.energy_compare.items)}
-            caption="Council-owned solar generation returned a dividend; council retail energy ventures collapsed."
-            kind="verified"
-            source={c.energy_compare.source}
-            height={300}
-          />
           <BigStat value={c.preston.amount} label={c.preston.label} kind="verified" source={c.preston.source} />
           <Beat>
             <Para>
               Other levers are real but modest, and honesty matters: local climate bonds have
               raised {c.cmi.value} nationally; roughly {c.land_value.value} of development
               land-value uplift goes uncaptured. None replaces core funding — together they
-              diversify income and keep wealth local.
+              diversify income the council owns and keep wealth local.
             </Para>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               <MiniStat value={c.cmi.value} label={c.cmi.label} source={c.cmi.source} />
               <MiniStat value={c.land_value.value} label={c.land_value.label} source={c.land_value.source} />
             </div>
           </Beat>
-          <BigStat value={c.cautionary.value} label={c.cautionary.label} kind="verified" source={c.cautionary.source} />
-
-          {/* 5b — The specifics: named candidates + calculator */}
           <Beat>
-            <BeatHead kicker="The specifics">Where to cut, by name</BeatHead>
             <Para>
-              Generalities are easy to wave away, so here are the actual line items. These are
-              the largest <em>discretionary</em> payments in the councils&apos; own data —
-              after stripping out capital-project engineering, statutory care, audit and
+              These aren&apos;t wishful — councils elsewhere already run them at a profit. The
+              menu of <em>productive</em> assets (income-generating, service-linked) is wider than
+              housing, and Germany&apos;s municipal utilities show the endgame: profitable energy
+              generation cross-subsidising the services that lose money. The line that matters is
+              owning a productive asset, never borrowing to gamble on yield.
+            </Para>
+            <RevenueMenu rows={c.revenue_menu} />
+          </Beat>
+
+          {/* 6 — Where to cut (progressively) */}
+          <Beat>
+            <BeatHead kicker="Where to cut">Hard, honest — and fair</BeatHead>
+            <Para>
+              None of this is free. Owning assets takes up-front money, and the settlement
+              from Westminster won&apos;t provide it — so the first round has to come from
+              cuts. Cuts are painful, so the question is <em>who pays</em>. Council tax already
+              falls hardest on those with the least, so the fairest place to start is the
+              mirror image: charges and reliefs that fall on wealth and assets, not on need.
+            </Para>
+          </Beat>
+          <BigStat value={c.council_tax_regressive.value} label={c.council_tax_regressive.label} kind="verified" source={c.council_tax_regressive.source} />
+          <Beat>
+            <Para>
+              Here are specific, named levers Devon and Exeter already control — each one
+              weighted toward those most able to pay. Several are real policies the councils
+              have adopted or proposed; the point is to lean into them, not soften them.
+            </Para>
+            <ProgressiveCuts rows={c.progressive_cuts} />
+          </Beat>
+          <Beat>
+            <Para>
+              Being honest cuts both ways. The same budget lines also contain cuts that would
+              fall hardest on those in need — and those are exactly the ones to protect. If
+              money has to be found, it should come from the list above, not this one.
+            </Para>
+            <ProtectList rows={c.progressive_protect} />
+          </Beat>
+
+          {/* 6b — The specifics: discretionary line items + calculator */}
+          <Beat>
+            <BeatHead kicker="The specifics">And the waste, by name</BeatHead>
+            <Para>
+              Alongside the progressive levers, there&apos;s discretionary spending to trim.
+              These are the largest such payments in the councils&apos; own data — after
+              stripping out capital-project engineering, statutory care, audit and
               inter-authority transfers, which aren&apos;t waste. What remains — agency
-              staffing, management consultancy and software contracts — is where money could be
-              recovered.
+              staffing and management consultancy — can be insourced to recover the
+              contractor margin; software contracts are at least worth renegotiating.
             </Para>
             <NamedCandidates d={d} />
           </Beat>
           <Beat className="max-w-3xl">
             <Para>
-              So what does that buy? Trim these lines and the savings have somewhere to go —
-              but <em>where</em> depends on which council. Exeter (the district) can put it into
-              council housing; Devon (the county) into insourcing the care and SEND staff it
-              currently rents at a premium.
+              Now put the whole argument in your hands. Insourcing these lines doesn&apos;t delete
+              the service — it stops paying a contractor&apos;s premium, and only that recovered
+              margin is a real saving. Add the progressive revenue, reinvest it in an asset the
+              council owns, and the returns compound year on year. Exeter builds homes; Devon owns
+              income-generating assets. Set your own assumptions and watch the flywheel turn.
             </Para>
           </Beat>
           {c.redirect_assumptions && (
-            <RebudgetCalculator data={d} a={{ ...c.redirect_assumptions, run_rate_year: d.run_rate_year }} />
+            <RebudgetCalculator
+              data={d}
+              a={{ ...c.redirect_assumptions, run_rate_year: d.run_rate_year }}
+              levers={c.progressive_cuts}
+              reinvestOptions={c.reinvest_options}
+            />
           )}
 
           {/* 6 — What each council can do */}
@@ -243,6 +308,14 @@ export default function StoryPage() {
               and the{" "}
               <a className="text-blue-600 hover:underline dark:text-blue-400" href={asset("/research/redirect-scenarios.md")}>
                 redirect-model benchmarks
+              </a>{" "}
+              and the{" "}
+              <a className="text-blue-600 hover:underline dark:text-blue-400" href={asset("/research/progressive-cuts.md")}>
+                progressive-cuts dossier
+              </a>{" "}
+              and the{" "}
+              <a className="text-blue-600 hover:underline dark:text-blue-400" href={asset("/research/municipal-revenue-models.md")}>
+                municipal-revenue-models dossier
               </a>
               . Explore the underlying numbers in the{" "}
               <a className="text-blue-600 hover:underline dark:text-blue-400" href={asset("/analysis")}>
@@ -295,6 +368,113 @@ function NamedCandidates({ d }: { d: FromData }) {
   );
 }
 
+interface CutRow {
+  lever: string;
+  council: string;
+  who: string;
+  value: string;
+  status: string;
+  source: string;
+  url: string;
+}
+
+function ProgressiveCuts({ rows }: { rows: CutRow[] }) {
+  return (
+    <div className="mt-5 overflow-x-auto rounded-lg border border-neutral-200 dark:border-neutral-800">
+      <table className="w-full text-sm">
+        <thead className="bg-neutral-50 text-left text-neutral-500 dark:bg-neutral-900">
+          <tr>
+            <th className="px-3 py-2 font-medium">Lever</th>
+            <th className="px-3 py-2 font-medium">Who it falls on</th>
+            <th className="px-3 py-2 text-right font-medium">Value</th>
+            <th className="px-3 py-2 font-medium">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r, i) => (
+            <tr key={i} className="border-t border-neutral-100 align-top dark:border-neutral-800/60">
+              <td className="px-3 py-2">
+                <a className="font-medium text-blue-600 hover:underline dark:text-blue-400" href={r.url} target="_blank" rel="noreferrer">
+                  {r.lever}
+                </a>
+                <span className="ml-1.5 rounded bg-neutral-100 px-1 py-0.5 text-[10px] uppercase tracking-wide text-neutral-500 dark:bg-neutral-800">
+                  {councilLabel(r.council)}
+                </span>
+              </td>
+              <td className="px-3 py-2 text-neutral-600 dark:text-neutral-400">{r.who}</td>
+              <td className="px-3 py-2 text-right tabular-nums">{r.value}</td>
+              <td className="px-3 py-2 text-neutral-500">{r.status}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className="px-3 py-2">
+        <SourceTag kind="verified">
+          Councils&apos; own published policies and fees. Council-tax premiums are billed by
+          the district but shared across precepting authorities — the headline figure is the
+          total raised, not the council&apos;s retained share.
+        </SourceTag>
+      </div>
+    </div>
+  );
+}
+
+function ProtectList({ rows }: { rows: { item: string; why: string; source: string; url: string }[] }) {
+  return (
+    <div className="mt-5 rounded-lg border border-amber-200 bg-amber-50/50 p-4 dark:border-amber-900/60 dark:bg-amber-950/20">
+      <div className="mb-3 text-sm font-semibold text-amber-800 dark:text-amber-300">
+        Protect these — the regressive cuts to avoid
+      </div>
+      <ul className="space-y-3">
+        {rows.map((r, i) => (
+          <li key={i} className="text-sm">
+            <span className="font-medium text-neutral-900 dark:text-neutral-100">{r.item}</span>
+            <span className="text-neutral-600 dark:text-neutral-400"> — {r.why} </span>
+            <a className="text-blue-600 hover:underline dark:text-blue-400" href={r.url} target="_blank" rel="noreferrer">
+              ({r.source})
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function RevenueMenu({ rows }: { rows: { lever: string; applies: string; return: string; source: string; url: string }[] }) {
+  return (
+    <div className="mt-5 overflow-x-auto rounded-lg border border-neutral-200 dark:border-neutral-800">
+      <table className="w-full text-sm">
+        <thead className="bg-neutral-50 text-left text-neutral-500 dark:bg-neutral-900">
+          <tr>
+            <th className="px-3 py-2 font-medium">Revenue lever</th>
+            <th className="px-3 py-2 font-medium">Typical return</th>
+            <th className="px-3 py-2 font-medium">Who can use it</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r, i) => (
+            <tr key={i} className="border-t border-neutral-100 align-top dark:border-neutral-800/60">
+              <td className="px-3 py-2">
+                <a className="font-medium text-blue-600 hover:underline dark:text-blue-400" href={r.url} target="_blank" rel="noreferrer">
+                  {r.lever}
+                </a>
+              </td>
+              <td className="px-3 py-2 text-neutral-700 dark:text-neutral-300">{r.return}</td>
+              <td className="px-3 py-2 text-neutral-500">{r.applies}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className="px-3 py-2">
+        <SourceTag kind="verified">
+          Proven elsewhere — council accounts, APSE, Warrington BC, Lothian Buses and others.
+          Productive, service-linked assets only; never borrowing to buy assets primarily for yield.
+        </SourceTag>
+      </div>
+    </div>
+  );
+}
+
 function MiniStat({ value, label, source }: { value: string; label: string; source: string }) {
   return (
     <div className="rounded-lg border border-neutral-200 p-3 dark:border-neutral-800">
@@ -325,7 +505,7 @@ function concentrationOption(d: FromData): EChartsOption {
       data: years.map((y) => byKey.get(`${council}|${y}`) ?? null),
       markLine:
         council === "exeter"
-          ? { silent: true, symbol: "none", lineStyle: { type: "dashed" }, label: { position: "insideStartTop", formatter: "half of all spend" }, data: [{ yAxis: 50 }] }
+          ? { silent: true, symbol: "none", lineStyle: { type: "dashed" }, label: { position: "insideStartTop", textBorderWidth: 0, formatter: "half of all spend" }, data: [{ yAxis: 50 }] }
           : undefined,
     })),
   };
@@ -359,7 +539,7 @@ function serviceShiftOption(items: { service: string; change: number }[]): EChar
           value: x.change,
           itemStyle: { color: x.change >= 0 ? "#16a34a" : "#dc2626" },
         })),
-        label: { show: true, position: "right", formatter: (p: any) => `${p.value > 0 ? "+" : ""}${p.value}%` },
+        label: { show: true, position: "right", color: "inherit", textBorderWidth: 0, formatter: (p: any) => `${p.value > 0 ? "+" : ""}${p.value}%` },
       },
     ],
   };
@@ -375,7 +555,7 @@ function energyOption(items: { label: string; value: number; good: boolean }[]):
       {
         type: "bar",
         data: items.map((x) => ({ value: x.value, itemStyle: { color: x.good ? "#16a34a" : "#dc2626" } })),
-        label: { show: true, position: "right", formatter: (p: any) => `£${p.value}m` },
+        label: { show: true, position: "right", color: "inherit", textBorderWidth: 0, formatter: (p: any) => `£${p.value}m` },
       },
     ],
   };
