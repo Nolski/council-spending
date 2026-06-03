@@ -505,7 +505,28 @@ function concentrationOption(d: FromData): EChartsOption {
       data: years.map((y) => byKey.get(`${council}|${y}`) ?? null),
       markLine:
         council === "exeter"
-          ? { silent: true, symbol: "none", lineStyle: { type: "dashed" }, label: { position: "insideStartTop", textBorderWidth: 0, formatter: "half of all spend" }, data: [{ yAxis: 50 }] }
+          ? {
+              silent: true,
+              symbol: "none",
+              lineStyle: { type: "dashed", color: "#9ca3af" },
+              // markLine labels don't inherit the global textStyle, so they otherwise
+              // get a white auto-stroke that's an ugly halo on a dark card. Pin an
+              // explicit chip that reads on both light and dark, with no stroke.
+              label: {
+                position: "insideStartTop",
+                formatter: "half of all spend",
+                color: "#fafafa",
+                textBorderColor: "transparent",
+                textBorderWidth: 0,
+                backgroundColor: "rgba(38,38,38,0.92)",
+                borderColor: "rgba(148,163,184,0.45)",
+                borderWidth: 1,
+                borderRadius: 3,
+                padding: [2, 5],
+                fontSize: 11,
+              },
+              data: [{ yAxis: 50 }],
+            }
           : undefined,
     })),
   };
